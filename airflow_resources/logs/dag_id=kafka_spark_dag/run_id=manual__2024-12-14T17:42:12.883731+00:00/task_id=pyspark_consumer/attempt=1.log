@@ -1,0 +1,363 @@
+[2024-12-14T17:43:07.800+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: kafka_spark_dag.pyspark_consumer manual__2024-12-14T17:42:12.883731+00:00 [queued]>
+[2024-12-14T17:43:07.839+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: kafka_spark_dag.pyspark_consumer manual__2024-12-14T17:42:12.883731+00:00 [queued]>
+[2024-12-14T17:43:07.841+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 2
+[2024-12-14T17:43:07.893+0000] {taskinstance.py:1382} INFO - Executing <Task(DockerOperator): pyspark_consumer> on 2024-12-14 17:42:12.883731+00:00
+[2024-12-14T17:43:07.908+0000] {standard_task_runner.py:57} INFO - Started process 1650 to run task
+[2024-12-14T17:43:07.921+0000] {standard_task_runner.py:84} INFO - Running: ['airflow', 'tasks', 'run', 'kafka_spark_dag', 'pyspark_consumer', 'manual__2024-12-14T17:42:12.883731+00:00', '--job-id', '4', '--raw', '--subdir', 'DAGS_FOLDER/dag_kafka_spark.py', '--cfg-path', '/tmp/tmpaamb55qm']
+[2024-12-14T17:43:07.934+0000] {standard_task_runner.py:85} INFO - Job 4: Subtask pyspark_consumer
+[2024-12-14T17:43:08.127+0000] {task_command.py:416} INFO - Running <TaskInstance: kafka_spark_dag.pyspark_consumer manual__2024-12-14T17:42:12.883731+00:00 [running]> on host 593a4b9e7bf2
+[2024-12-14T17:43:08.355+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='kafka_spark_dag' AIRFLOW_CTX_TASK_ID='pyspark_consumer' AIRFLOW_CTX_EXECUTION_DATE='2024-12-14T17:42:12.883731+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-12-14T17:42:12.883731+00:00'
+[2024-12-14T17:43:08.543+0000] {docker.py:343} INFO - Starting docker container from image reddit-consumer/spark:latest
+[2024-12-14T17:43:08.570+0000] {docker.py:351} WARNING - Using remote engine or docker-in-docker and mounting temporary volume from host is not supported. Falling back to `mount_tmp_dir=False` mode. You can set `mount_tmp_dir` parameter to False to disable mounting and remove the warning
+[2024-12-14T17:43:09.343+0000] {docker.py:413} INFO - [38;5;6mspark [38;5;5m17:43:09.33 [0m[38;5;2mINFO [0m ==>
+[2024-12-14T17:43:09.348+0000] {docker.py:413} INFO - [38;5;6mspark [38;5;5m17:43:09.34 [0m[38;5;2mINFO [0m ==> [1mWelcome to the Bitnami spark container[0m
+[2024-12-14T17:43:09.356+0000] {docker.py:413} INFO - [38;5;6mspark [38;5;5m17:43:09.35 [0m[38;5;2mINFO [0m ==> Subscribe to project updates by watching [1mhttps://github.com/bitnami/containers[0m
+[2024-12-14T17:43:09.363+0000] {docker.py:413} INFO - [38;5;6mspark [38;5;5m17:43:09.35 [0m[38;5;2mINFO [0m ==> Submit issues and feature requests at [1mhttps://github.com/bitnami/containers/issues[0m
+[2024-12-14T17:43:09.369+0000] {docker.py:413} INFO - [38;5;6mspark [38;5;5m17:43:09.36 [0m[38;5;2mINFO [0m ==>
+[2024-12-14T17:43:09.377+0000] {docker.py:413} INFO - 
+[2024-12-14T17:43:16.665+0000] {docker.py:413} INFO - :: loading settings :: url = jar:file:/opt/bitnami/spark/jars/ivy-2.5.1.jar!/org/apache/ivy/core/settings/ivysettings.xml
+[2024-12-14T17:43:16.856+0000] {docker.py:413} INFO - Ivy Default Cache set to: /root/.ivy2/cache
+The jars for the packages stored in: /root/.ivy2/jars
+[2024-12-14T17:43:16.867+0000] {docker.py:413} INFO - org.***ql#***ql added as a dependency
+org.apache.spark#spark-sql-kafka-0-10_2.12 added as a dependency
+[2024-12-14T17:43:16.869+0000] {docker.py:413} INFO - :: resolving dependencies :: org.apache.spark#spark-submit-parent-b31dcf6c-3828-4ff1-8c7b-f04feca9cde8;1.0
+	confs: [default]
+[2024-12-14T17:43:19.282+0000] {docker.py:413} INFO - found org.***ql#***ql;42.5.4 in central
+[2024-12-14T17:43:19.782+0000] {docker.py:413} INFO - found org.checkerframework#checker-qual;3.5.0 in central
+[2024-12-14T17:43:24.127+0000] {docker.py:413} INFO - found org.apache.spark#spark-sql-kafka-0-10_2.12;3.5.0 in central
+[2024-12-14T17:43:25.150+0000] {docker.py:413} INFO - found org.apache.spark#spark-token-provider-kafka-0-10_2.12;3.5.0 in central
+[2024-12-14T17:43:25.731+0000] {docker.py:413} INFO - found org.apache.kafka#kafka-clients;3.4.1 in central
+[2024-12-14T17:43:26.333+0000] {docker.py:413} INFO - found org.lz4#lz4-java;1.8.0 in central
+[2024-12-14T17:43:26.970+0000] {docker.py:413} INFO - found org.xerial.snappy#snappy-java;1.1.10.3 in central
+[2024-12-14T17:43:29.035+0000] {docker.py:413} INFO - found org.slf4j#slf4j-api;2.0.7 in central
+[2024-12-14T17:43:32.182+0000] {docker.py:413} INFO - found org.apache.hadoop#hadoop-client-runtime;3.3.4 in central
+[2024-12-14T17:43:32.740+0000] {docker.py:413} INFO - found org.apache.hadoop#hadoop-client-api;3.3.4 in central
+[2024-12-14T17:43:36.949+0000] {docker.py:413} INFO - found commons-logging#commons-logging;1.1.3 in central
+[2024-12-14T17:43:37.600+0000] {docker.py:413} INFO - found com.google.code.findbugs#jsr305;3.0.0 in central
+[2024-12-14T17:43:42.405+0000] {docker.py:413} INFO - found org.apache.commons#commons-pool2;2.11.1 in central
+[2024-12-14T17:43:42.703+0000] {docker.py:413} INFO - downloading https://repo1.maven.org/maven2/org/***ql/***ql/42.5.4/***ql-42.5.4.jar ...
+[2024-12-14T17:43:47.625+0000] {docker.py:413} INFO - [SUCCESSFUL ] org.***ql#***ql;42.5.4!***ql.jar (5192ms)
+[2024-12-14T17:43:47.927+0000] {docker.py:413} INFO - downloading https://repo1.maven.org/maven2/org/apache/spark/spark-sql-kafka-0-10_2.12/3.5.0/spark-sql-kafka-0-10_2.12-3.5.0.jar ...
+[2024-12-14T17:43:49.766+0000] {docker.py:413} INFO - [SUCCESSFUL ] org.apache.spark#spark-sql-kafka-0-10_2.12;3.5.0!spark-sql-kafka-0-10_2.12.jar (2138ms)
+[2024-12-14T17:43:50.071+0000] {docker.py:413} INFO - downloading https://repo1.maven.org/maven2/org/checkerframework/checker-qual/3.5.0/checker-qual-3.5.0.jar ...
+[2024-12-14T17:43:50.898+0000] {docker.py:413} INFO - [SUCCESSFUL ] org.checkerframework#checker-qual;3.5.0!checker-qual.jar (1130ms)
+[2024-12-14T17:43:51.199+0000] {docker.py:413} INFO - downloading https://repo1.maven.org/maven2/org/apache/spark/spark-token-provider-kafka-0-10_2.12/3.5.0/spark-token-provider-kafka-0-10_2.12-3.5.0.jar ...
+[2024-12-14T17:43:51.817+0000] {docker.py:413} INFO - [SUCCESSFUL ] org.apache.spark#spark-token-provider-kafka-0-10_2.12;3.5.0!spark-token-provider-kafka-0-10_2.12.jar (917ms)
+[2024-12-14T17:43:52.128+0000] {docker.py:413} INFO - downloading https://repo1.maven.org/maven2/org/apache/kafka/kafka-clients/3.4.1/kafka-clients-3.4.1.jar ...
+[2024-12-14T17:44:02.754+0000] {docker.py:413} INFO - [SUCCESSFUL ] org.apache.kafka#kafka-clients;3.4.1!kafka-clients.jar (10934ms)
+[2024-12-14T17:44:02.980+0000] {docker.py:413} INFO - downloading https://repo1.maven.org/maven2/com/google/code/findbugs/jsr305/3.0.0/jsr305-3.0.0.jar ...
+[2024-12-14T17:44:03.291+0000] {docker.py:413} INFO - [SUCCESSFUL ] com.google.code.findbugs#jsr305;3.0.0!jsr305.jar (535ms)
+[2024-12-14T17:44:03.589+0000] {docker.py:413} INFO - downloading https://repo1.maven.org/maven2/org/apache/commons/commons-pool2/2.11.1/commons-pool2-2.11.1.jar ...
+[2024-12-14T17:44:04.930+0000] {docker.py:413} INFO - [SUCCESSFUL ] org.apache.commons#commons-pool2;2.11.1!commons-pool2.jar (1638ms)
+[2024-12-14T17:44:05.130+0000] {docker.py:413} INFO - downloading https://repo1.maven.org/maven2/org/apache/hadoop/hadoop-client-runtime/3.3.4/hadoop-client-runtime-3.3.4.jar ...
+[2024-12-14T17:44:26.289+0000] {docker.py:413} INFO - [SUCCESSFUL ] org.apache.hadoop#hadoop-client-runtime;3.3.4!hadoop-client-runtime.jar (21358ms)
+[2024-12-14T17:44:26.492+0000] {docker.py:413} INFO - downloading https://repo1.maven.org/maven2/org/lz4/lz4-java/1.8.0/lz4-java-1.8.0.jar ...
+[2024-12-14T17:44:26.953+0000] {docker.py:413} INFO - [SUCCESSFUL ] org.lz4#lz4-java;1.8.0!lz4-java.jar (661ms)
+[2024-12-14T17:44:27.244+0000] {docker.py:413} INFO - downloading https://repo1.maven.org/maven2/org/xerial/snappy/snappy-java/1.1.10.3/snappy-java-1.1.10.3.jar ...
+[2024-12-14T17:44:31.298+0000] {docker.py:413} INFO - [SUCCESSFUL ] org.xerial.snappy#snappy-java;1.1.10.3!snappy-java.jar(bundle) (4342ms)
+[2024-12-14T17:44:31.551+0000] {docker.py:413} INFO - downloading https://repo1.maven.org/maven2/org/slf4j/slf4j-api/2.0.7/slf4j-api-2.0.7.jar ...
+[2024-12-14T17:44:33.900+0000] {docker.py:413} INFO - [SUCCESSFUL ] org.slf4j#slf4j-api;2.0.7!slf4j-api.jar (2601ms)
+[2024-12-14T17:44:34.204+0000] {docker.py:413} INFO - downloading https://repo1.maven.org/maven2/org/apache/hadoop/hadoop-client-api/3.3.4/hadoop-client-api-3.3.4.jar ...
+[2024-12-14T17:44:50.601+0000] {docker.py:413} INFO - [SUCCESSFUL ] org.apache.hadoop#hadoop-client-api;3.3.4!hadoop-client-api.jar (16697ms)
+[2024-12-14T17:44:50.896+0000] {docker.py:413} INFO - downloading https://repo1.maven.org/maven2/commons-logging/commons-logging/1.1.3/commons-logging-1.1.3.jar ...
+[2024-12-14T17:44:53.563+0000] {docker.py:413} INFO - [SUCCESSFUL ] commons-logging#commons-logging;1.1.3!commons-logging.jar (2960ms)
+[2024-12-14T17:44:53.565+0000] {docker.py:413} INFO - :: resolution report :: resolve 25562ms :: artifacts dl 71132ms
+	:: modules in use:
+[2024-12-14T17:44:53.566+0000] {docker.py:413} INFO - com.google.code.findbugs#jsr305;3.0.0 from central in [default]
+	commons-logging#commons-logging;1.1.3 from central in [default]
+	org.apache.commons#commons-pool2;2.11.1 from central in [default]
+	org.apache.hadoop#hadoop-client-api;3.3.4 from central in [default]
+	org.apache.hadoop#hadoop-client-runtime;3.3.4 from central in [default]
+	org.apache.kafka#kafka-clients;3.4.1 from central in [default]
+	org.apache.spark#spark-sql-kafka-0-10_2.12;3.5.0 from central in [default]
+	org.apache.spark#spark-token-provider-kafka-0-10_2.12;3.5.0 from central in [default]
+	org.checkerframework#checker-qual;3.5.0 from central in [default]
+	org.lz4#lz4-java;1.8.0 from central in [default]
+	org.***ql#***ql;42.5.4 from central in [default]
+	org.slf4j#slf4j-api;2.0.7 from central in [default]
+	org.xerial.snappy#snappy-java;1.1.10.3 from central in [default]
+[2024-12-14T17:44:53.568+0000] {docker.py:413} INFO - ---------------------------------------------------------------------
+	|                  |            modules            ||   artifacts   |
+[2024-12-14T17:44:53.569+0000] {docker.py:413} INFO - |       conf       | number| search|dwnlded|evicted|| number|dwnlded|
+	---------------------------------------------------------------------
+[2024-12-14T17:44:53.572+0000] {docker.py:413} INFO - |      default     |   13  |   13  |   13  |   0   ||   13  |   13  |
+	---------------------------------------------------------------------
+[2024-12-14T17:44:53.580+0000] {docker.py:413} INFO - :: retrieving :: org.apache.spark#spark-submit-parent-b31dcf6c-3828-4ff1-8c7b-f04feca9cde8
+	confs: [default]
+[2024-12-14T17:44:53.701+0000] {docker.py:413} INFO - 13 artifacts copied, 0 already retrieved (58001kB/121ms)
+[2024-12-14T17:44:54.337+0000] {docker.py:413} INFO - 24/12/14 17:44:54 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+[2024-12-14T17:44:59.289+0000] {docker.py:413} INFO - 2024-12-14 17:44:59,287 [INFO] Starting Spark Streaming job
+2024-12-14 17:44:59,287 [INFO] Starting stream processing...
+2024-12-14 17:44:59,287 [INFO] Creating Spark session...
+[2024-12-14T17:44:59.480+0000] {docker.py:413} INFO - 24/12/14 17:44:59 INFO SparkContext: Running Spark version 3.5.0
+[2024-12-14T17:44:59.481+0000] {docker.py:413} INFO - 24/12/14 17:44:59 INFO SparkContext: OS info Linux, 6.10.11-linuxkit, amd64
+[2024-12-14T17:44:59.482+0000] {docker.py:413} INFO - 24/12/14 17:44:59 INFO SparkContext: Java version 17.0.10
+[2024-12-14T17:44:59.539+0000] {docker.py:413} INFO - 24/12/14 17:44:59 INFO ResourceUtils: ==============================================================
+[2024-12-14T17:44:59.540+0000] {docker.py:413} INFO - 24/12/14 17:44:59 INFO ResourceUtils: No custom resources configured for spark.driver.
+[2024-12-14T17:44:59.541+0000] {docker.py:413} INFO - 24/12/14 17:44:59 INFO ResourceUtils: ==============================================================
+[2024-12-14T17:44:59.542+0000] {docker.py:413} INFO - 24/12/14 17:44:59 INFO SparkContext: Submitted application: RedditSoccerAnalysis
+[2024-12-14T17:44:59.589+0000] {docker.py:413} INFO - 24/12/14 17:44:59 INFO ResourceProfile: Default ResourceProfile created, executor resources: Map(cores -> name: cores, amount: 1, script: , vendor: , memory -> name: memory, amount: 1024, script: , vendor: , offHeap -> name: offHeap, amount: 0, script: , vendor: ), task resources: Map(cpus -> name: cpus, amount: 1.0)
+[2024-12-14T17:44:59.605+0000] {docker.py:413} INFO - 24/12/14 17:44:59 INFO ResourceProfile: Limiting resource is cpu
+[2024-12-14T17:44:59.606+0000] {docker.py:413} INFO - 24/12/14 17:44:59 INFO ResourceProfileManager: Added ResourceProfile id: 0
+[2024-12-14T17:44:59.741+0000] {docker.py:413} INFO - 24/12/14 17:44:59 INFO SecurityManager: Changing view acls to: root,spark
+[2024-12-14T17:44:59.743+0000] {docker.py:413} INFO - 24/12/14 17:44:59 INFO SecurityManager: Changing modify acls to: root,spark
+[2024-12-14T17:44:59.744+0000] {docker.py:413} INFO - 24/12/14 17:44:59 INFO SecurityManager: Changing view acls groups to:
+[2024-12-14T17:44:59.745+0000] {docker.py:413} INFO - 24/12/14 17:44:59 INFO SecurityManager: Changing modify acls groups to:
+[2024-12-14T17:44:59.746+0000] {docker.py:413} INFO - 24/12/14 17:44:59 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: root, spark; groups with view permissions: EMPTY; users with modify permissions: root, spark; groups with modify permissions: EMPTY
+[2024-12-14T17:45:00.312+0000] {docker.py:413} INFO - 24/12/14 17:45:00 INFO Utils: Successfully started service 'sparkDriver' on port 35571.
+[2024-12-14T17:45:00.393+0000] {docker.py:413} INFO - 24/12/14 17:45:00 INFO SparkEnv: Registering MapOutputTracker
+[2024-12-14T17:45:00.522+0000] {docker.py:413} INFO - 24/12/14 17:45:00 INFO SparkEnv: Registering BlockManagerMaster
+[2024-12-14T17:45:00.571+0000] {docker.py:413} INFO - 24/12/14 17:45:00 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+[2024-12-14T17:45:00.572+0000] {docker.py:413} INFO - 24/12/14 17:45:00 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+[2024-12-14T17:45:00.584+0000] {docker.py:413} INFO - 24/12/14 17:45:00 INFO SparkEnv: Registering BlockManagerMasterHeartbeat
+[2024-12-14T17:45:00.646+0000] {docker.py:413} INFO - 24/12/14 17:45:00 INFO DiskBlockManager: Created local directory at /tmp/blockmgr-36325919-1cd4-4b59-bbd2-e417549e06aa
+[2024-12-14T17:45:00.683+0000] {docker.py:413} INFO - 24/12/14 17:45:00 INFO MemoryStore: MemoryStore started with capacity 434.4 MiB
+[2024-12-14T17:45:00.712+0000] {docker.py:413} INFO - 24/12/14 17:45:00 INFO SparkEnv: Registering OutputCommitCoordinator
+[2024-12-14T17:45:01.032+0000] {docker.py:413} INFO - 24/12/14 17:45:01 INFO JettyUtils: Start Jetty 0.0.0.0:4040 for SparkUI
+[2024-12-14T17:45:01.225+0000] {docker.py:413} INFO - 24/12/14 17:45:01 INFO Utils: Successfully started service 'SparkUI' on port 4040.
+[2024-12-14T17:45:01.305+0000] {docker.py:413} INFO - 24/12/14 17:45:01 INFO SparkContext: Added JAR file:///root/.ivy2/jars/org.***ql_***ql-42.5.4.jar at spark://localhost:35571/jars/org.***ql_***ql-42.5.4.jar with timestamp 1734198299459
+[2024-12-14T17:45:01.306+0000] {docker.py:413} INFO - 24/12/14 17:45:01 INFO SparkContext: Added JAR file:///root/.ivy2/jars/org.apache.spark_spark-sql-kafka-0-10_2.12-3.5.0.jar at spark://localhost:35571/jars/org.apache.spark_spark-sql-kafka-0-10_2.12-3.5.0.jar with timestamp 1734198299459
+[2024-12-14T17:45:01.308+0000] {docker.py:413} INFO - 24/12/14 17:45:01 INFO SparkContext: Added JAR file:///root/.ivy2/jars/org.checkerframework_checker-qual-3.5.0.jar at spark://localhost:35571/jars/org.checkerframework_checker-qual-3.5.0.jar with timestamp 1734198299459
+[2024-12-14T17:45:01.309+0000] {docker.py:413} INFO - 24/12/14 17:45:01 INFO SparkContext: Added JAR file:///root/.ivy2/jars/org.apache.spark_spark-token-provider-kafka-0-10_2.12-3.5.0.jar at spark://localhost:35571/jars/org.apache.spark_spark-token-provider-kafka-0-10_2.12-3.5.0.jar with timestamp 1734198299459
+[2024-12-14T17:45:01.311+0000] {docker.py:413} INFO - 24/12/14 17:45:01 INFO SparkContext: Added JAR file:///root/.ivy2/jars/org.apache.kafka_kafka-clients-3.4.1.jar at spark://localhost:35571/jars/org.apache.kafka_kafka-clients-3.4.1.jar with timestamp 1734198299459
+[2024-12-14T17:45:01.312+0000] {docker.py:413} INFO - 24/12/14 17:45:01 INFO SparkContext: Added JAR file:///root/.ivy2/jars/com.google.code.findbugs_jsr305-3.0.0.jar at spark://localhost:35571/jars/com.google.code.findbugs_jsr305-3.0.0.jar with timestamp 1734198299459
+[2024-12-14T17:45:01.314+0000] {docker.py:413} INFO - 24/12/14 17:45:01 INFO SparkContext: Added JAR file:///root/.ivy2/jars/org.apache.commons_commons-pool2-2.11.1.jar at spark://localhost:35571/jars/org.apache.commons_commons-pool2-2.11.1.jar with timestamp 1734198299459
+[2024-12-14T17:45:01.315+0000] {docker.py:413} INFO - 24/12/14 17:45:01 INFO SparkContext: Added JAR file:///root/.ivy2/jars/org.apache.hadoop_hadoop-client-runtime-3.3.4.jar at spark://localhost:35571/jars/org.apache.hadoop_hadoop-client-runtime-3.3.4.jar with timestamp 1734198299459
+[2024-12-14T17:45:01.317+0000] {docker.py:413} INFO - 24/12/14 17:45:01 INFO SparkContext: Added JAR file:///root/.ivy2/jars/org.lz4_lz4-java-1.8.0.jar at spark://localhost:35571/jars/org.lz4_lz4-java-1.8.0.jar with timestamp 1734198299459
+[2024-12-14T17:45:01.318+0000] {docker.py:413} INFO - 24/12/14 17:45:01 INFO SparkContext: Added JAR file:///root/.ivy2/jars/org.xerial.snappy_snappy-java-1.1.10.3.jar at spark://localhost:35571/jars/org.xerial.snappy_snappy-java-1.1.10.3.jar with timestamp 1734198299459
+[2024-12-14T17:45:01.319+0000] {docker.py:413} INFO - 24/12/14 17:45:01 INFO SparkContext: Added JAR file:///root/.ivy2/jars/org.slf4j_slf4j-api-2.0.7.jar at spark://localhost:35571/jars/org.slf4j_slf4j-api-2.0.7.jar with timestamp 1734198299459
+[2024-12-14T17:45:01.321+0000] {docker.py:413} INFO - 24/12/14 17:45:01 INFO SparkContext: Added JAR file:///root/.ivy2/jars/org.apache.hadoop_hadoop-client-api-3.3.4.jar at spark://localhost:35571/jars/org.apache.hadoop_hadoop-client-api-3.3.4.jar with timestamp 1734198299459
+[2024-12-14T17:45:01.322+0000] {docker.py:413} INFO - 24/12/14 17:45:01 INFO SparkContext: Added JAR file:///root/.ivy2/jars/commons-logging_commons-logging-1.1.3.jar at spark://localhost:35571/jars/commons-logging_commons-logging-1.1.3.jar with timestamp 1734198299459
+[2024-12-14T17:45:01.324+0000] {docker.py:413} INFO - 24/12/14 17:45:01 INFO SparkContext: Added file file:///root/.ivy2/jars/org.***ql_***ql-42.5.4.jar at file:///root/.ivy2/jars/org.***ql_***ql-42.5.4.jar with timestamp 1734198299459
+[2024-12-14T17:45:01.328+0000] {docker.py:413} INFO - 24/12/14 17:45:01 INFO Utils: Copying /root/.ivy2/jars/org.***ql_***ql-42.5.4.jar to /tmp/spark-e29a8518-050f-4e2f-a771-05093e49614a/userFiles-cf58fd08-1672-4d83-8a21-62d9125ada35/org.***ql_***ql-42.5.4.jar
+[2024-12-14T17:45:01.355+0000] {docker.py:413} INFO - 24/12/14 17:45:01 INFO SparkContext: Added file file:///root/.ivy2/jars/org.apache.spark_spark-sql-kafka-0-10_2.12-3.5.0.jar at file:///root/.ivy2/jars/org.apache.spark_spark-sql-kafka-0-10_2.12-3.5.0.jar with timestamp 1734198299459
+[2024-12-14T17:45:01.357+0000] {docker.py:413} INFO - 24/12/14 17:45:01 INFO Utils: Copying /root/.ivy2/jars/org.apache.spark_spark-sql-kafka-0-10_2.12-3.5.0.jar to /tmp/spark-e29a8518-050f-4e2f-a771-05093e49614a/userFiles-cf58fd08-1672-4d83-8a21-62d9125ada35/org.apache.spark_spark-sql-kafka-0-10_2.12-3.5.0.jar
+[2024-12-14T17:45:01.365+0000] {docker.py:413} INFO - 24/12/14 17:45:01 INFO SparkContext: Added file file:///root/.ivy2/jars/org.checkerframework_checker-qual-3.5.0.jar at file:///root/.ivy2/jars/org.checkerframework_checker-qual-3.5.0.jar with timestamp 1734198299459
+[2024-12-14T17:45:01.366+0000] {docker.py:413} INFO - 24/12/14 17:45:01 INFO Utils: Copying /root/.ivy2/jars/org.checkerframework_checker-qual-3.5.0.jar to /tmp/spark-e29a8518-050f-4e2f-a771-05093e49614a/userFiles-cf58fd08-1672-4d83-8a21-62d9125ada35/org.checkerframework_checker-qual-3.5.0.jar
+[2024-12-14T17:45:01.374+0000] {docker.py:413} INFO - 24/12/14 17:45:01 INFO SparkContext: Added file file:///root/.ivy2/jars/org.apache.spark_spark-token-provider-kafka-0-10_2.12-3.5.0.jar at file:///root/.ivy2/jars/org.apache.spark_spark-token-provider-kafka-0-10_2.12-3.5.0.jar with timestamp 1734198299459
+[2024-12-14T17:45:01.375+0000] {docker.py:413} INFO - 24/12/14 17:45:01 INFO Utils: Copying /root/.ivy2/jars/org.apache.spark_spark-token-provider-kafka-0-10_2.12-3.5.0.jar to /tmp/spark-e29a8518-050f-4e2f-a771-05093e49614a/userFiles-cf58fd08-1672-4d83-8a21-62d9125ada35/org.apache.spark_spark-token-provider-kafka-0-10_2.12-3.5.0.jar
+[2024-12-14T17:45:01.383+0000] {docker.py:413} INFO - 24/12/14 17:45:01 INFO SparkContext: Added file file:///root/.ivy2/jars/org.apache.kafka_kafka-clients-3.4.1.jar at file:///root/.ivy2/jars/org.apache.kafka_kafka-clients-3.4.1.jar with timestamp 1734198299459
+[2024-12-14T17:45:01.385+0000] {docker.py:413} INFO - 24/12/14 17:45:01 INFO Utils: Copying /root/.ivy2/jars/org.apache.kafka_kafka-clients-3.4.1.jar to /tmp/spark-e29a8518-050f-4e2f-a771-05093e49614a/userFiles-cf58fd08-1672-4d83-8a21-62d9125ada35/org.apache.kafka_kafka-clients-3.4.1.jar
+[2024-12-14T17:45:01.395+0000] {docker.py:413} INFO - 24/12/14 17:45:01 INFO SparkContext: Added file file:///root/.ivy2/jars/com.google.code.findbugs_jsr305-3.0.0.jar at file:///root/.ivy2/jars/com.google.code.findbugs_jsr305-3.0.0.jar with timestamp 1734198299459
+[2024-12-14T17:45:01.396+0000] {docker.py:413} INFO - 24/12/14 17:45:01 INFO Utils: Copying /root/.ivy2/jars/com.google.code.findbugs_jsr305-3.0.0.jar to /tmp/spark-e29a8518-050f-4e2f-a771-05093e49614a/userFiles-cf58fd08-1672-4d83-8a21-62d9125ada35/com.google.code.findbugs_jsr305-3.0.0.jar
+[2024-12-14T17:45:01.405+0000] {docker.py:413} INFO - 24/12/14 17:45:01 INFO SparkContext: Added file file:///root/.ivy2/jars/org.apache.commons_commons-pool2-2.11.1.jar at file:///root/.ivy2/jars/org.apache.commons_commons-pool2-2.11.1.jar with timestamp 1734198299459
+[2024-12-14T17:45:01.406+0000] {docker.py:413} INFO - 24/12/14 17:45:01 INFO Utils: Copying /root/.ivy2/jars/org.apache.commons_commons-pool2-2.11.1.jar to /tmp/spark-e29a8518-050f-4e2f-a771-05093e49614a/userFiles-cf58fd08-1672-4d83-8a21-62d9125ada35/org.apache.commons_commons-pool2-2.11.1.jar
+[2024-12-14T17:45:01.414+0000] {docker.py:413} INFO - 24/12/14 17:45:01 INFO SparkContext: Added file file:///root/.ivy2/jars/org.apache.hadoop_hadoop-client-runtime-3.3.4.jar at file:///root/.ivy2/jars/org.apache.hadoop_hadoop-client-runtime-3.3.4.jar with timestamp 1734198299459
+[2024-12-14T17:45:01.416+0000] {docker.py:413} INFO - 24/12/14 17:45:01 INFO Utils: Copying /root/.ivy2/jars/org.apache.hadoop_hadoop-client-runtime-3.3.4.jar to /tmp/spark-e29a8518-050f-4e2f-a771-05093e49614a/userFiles-cf58fd08-1672-4d83-8a21-62d9125ada35/org.apache.hadoop_hadoop-client-runtime-3.3.4.jar
+[2024-12-14T17:45:01.459+0000] {docker.py:413} INFO - 24/12/14 17:45:01 INFO SparkContext: Added file file:///root/.ivy2/jars/org.lz4_lz4-java-1.8.0.jar at file:///root/.ivy2/jars/org.lz4_lz4-java-1.8.0.jar with timestamp 1734198299459
+[2024-12-14T17:45:01.461+0000] {docker.py:413} INFO - 24/12/14 17:45:01 INFO Utils: Copying /root/.ivy2/jars/org.lz4_lz4-java-1.8.0.jar to /tmp/spark-e29a8518-050f-4e2f-a771-05093e49614a/userFiles-cf58fd08-1672-4d83-8a21-62d9125ada35/org.lz4_lz4-java-1.8.0.jar
+[2024-12-14T17:45:01.469+0000] {docker.py:413} INFO - 24/12/14 17:45:01 INFO SparkContext: Added file file:///root/.ivy2/jars/org.xerial.snappy_snappy-java-1.1.10.3.jar at file:///root/.ivy2/jars/org.xerial.snappy_snappy-java-1.1.10.3.jar with timestamp 1734198299459
+[2024-12-14T17:45:01.471+0000] {docker.py:413} INFO - 24/12/14 17:45:01 INFO Utils: Copying /root/.ivy2/jars/org.xerial.snappy_snappy-java-1.1.10.3.jar to /tmp/spark-e29a8518-050f-4e2f-a771-05093e49614a/userFiles-cf58fd08-1672-4d83-8a21-62d9125ada35/org.xerial.snappy_snappy-java-1.1.10.3.jar
+[2024-12-14T17:45:01.479+0000] {docker.py:413} INFO - 24/12/14 17:45:01 INFO SparkContext: Added file file:///root/.ivy2/jars/org.slf4j_slf4j-api-2.0.7.jar at file:///root/.ivy2/jars/org.slf4j_slf4j-api-2.0.7.jar with timestamp 1734198299459
+[2024-12-14T17:45:01.481+0000] {docker.py:413} INFO - 24/12/14 17:45:01 INFO Utils: Copying /root/.ivy2/jars/org.slf4j_slf4j-api-2.0.7.jar to /tmp/spark-e29a8518-050f-4e2f-a771-05093e49614a/userFiles-cf58fd08-1672-4d83-8a21-62d9125ada35/org.slf4j_slf4j-api-2.0.7.jar
+[2024-12-14T17:45:01.487+0000] {docker.py:413} INFO - 24/12/14 17:45:01 INFO SparkContext: Added file file:///root/.ivy2/jars/org.apache.hadoop_hadoop-client-api-3.3.4.jar at file:///root/.ivy2/jars/org.apache.hadoop_hadoop-client-api-3.3.4.jar with timestamp 1734198299459
+[2024-12-14T17:45:01.488+0000] {docker.py:413} INFO - 24/12/14 17:45:01 INFO Utils: Copying /root/.ivy2/jars/org.apache.hadoop_hadoop-client-api-3.3.4.jar to /tmp/spark-e29a8518-050f-4e2f-a771-05093e49614a/userFiles-cf58fd08-1672-4d83-8a21-62d9125ada35/org.apache.hadoop_hadoop-client-api-3.3.4.jar
+[2024-12-14T17:45:01.515+0000] {docker.py:413} INFO - 24/12/14 17:45:01 INFO SparkContext: Added file file:///root/.ivy2/jars/commons-logging_commons-logging-1.1.3.jar at file:///root/.ivy2/jars/commons-logging_commons-logging-1.1.3.jar with timestamp 1734198299459
+[2024-12-14T17:45:01.516+0000] {docker.py:413} INFO - 24/12/14 17:45:01 INFO Utils: Copying /root/.ivy2/jars/commons-logging_commons-logging-1.1.3.jar to /tmp/spark-e29a8518-050f-4e2f-a771-05093e49614a/userFiles-cf58fd08-1672-4d83-8a21-62d9125ada35/commons-logging_commons-logging-1.1.3.jar
+[2024-12-14T17:45:01.696+0000] {docker.py:413} INFO - 24/12/14 17:45:01 INFO Executor: Starting executor ID driver on host localhost
+[2024-12-14T17:45:01.698+0000] {docker.py:413} INFO - 24/12/14 17:45:01 INFO Executor: OS info Linux, 6.10.11-linuxkit, amd64
+[2024-12-14T17:45:01.699+0000] {docker.py:413} INFO - 24/12/14 17:45:01 INFO Executor: Java version 17.0.10
+[2024-12-14T17:45:01.716+0000] {docker.py:413} INFO - 24/12/14 17:45:01 INFO Executor: Starting executor with user classpath (userClassPathFirst = false): ''
+[2024-12-14T17:45:01.717+0000] {docker.py:413} INFO - 24/12/14 17:45:01 INFO Executor: Created or updated repl class loader org.apache.spark.util.MutableURLClassLoader@e4b2f2d for default.
+[2024-12-14T17:45:01.749+0000] {docker.py:413} INFO - 24/12/14 17:45:01 INFO Executor: Fetching file:///root/.ivy2/jars/org.apache.spark_spark-sql-kafka-0-10_2.12-3.5.0.jar with timestamp 1734198299459
+[2024-12-14T17:45:01.820+0000] {docker.py:413} INFO - 24/12/14 17:45:01 INFO Utils: /root/.ivy2/jars/org.apache.spark_spark-sql-kafka-0-10_2.12-3.5.0.jar has been previously copied to /tmp/spark-e29a8518-050f-4e2f-a771-05093e49614a/userFiles-cf58fd08-1672-4d83-8a21-62d9125ada35/org.apache.spark_spark-sql-kafka-0-10_2.12-3.5.0.jar
+[2024-12-14T17:45:01.828+0000] {docker.py:413} INFO - 24/12/14 17:45:01 INFO Executor: Fetching file:///root/.ivy2/jars/org.***ql_***ql-42.5.4.jar with timestamp 1734198299459
+[2024-12-14T17:45:01.834+0000] {docker.py:413} INFO - 24/12/14 17:45:01 INFO Utils: /root/.ivy2/jars/org.***ql_***ql-42.5.4.jar has been previously copied to /tmp/spark-e29a8518-050f-4e2f-a771-05093e49614a/userFiles-cf58fd08-1672-4d83-8a21-62d9125ada35/org.***ql_***ql-42.5.4.jar
+[2024-12-14T17:45:01.840+0000] {docker.py:413} INFO - 24/12/14 17:45:01 INFO Executor: Fetching file:///root/.ivy2/jars/org.apache.hadoop_hadoop-client-api-3.3.4.jar with timestamp 1734198299459
+[2024-12-14T17:45:01.883+0000] {docker.py:413} INFO - 24/12/14 17:45:01 INFO Utils: /root/.ivy2/jars/org.apache.hadoop_hadoop-client-api-3.3.4.jar has been previously copied to /tmp/spark-e29a8518-050f-4e2f-a771-05093e49614a/userFiles-cf58fd08-1672-4d83-8a21-62d9125ada35/org.apache.hadoop_hadoop-client-api-3.3.4.jar
+[2024-12-14T17:45:01.891+0000] {docker.py:413} INFO - 24/12/14 17:45:01 INFO Executor: Fetching file:///root/.ivy2/jars/com.google.code.findbugs_jsr305-3.0.0.jar with timestamp 1734198299459
+[2024-12-14T17:45:01.892+0000] {docker.py:413} INFO - 24/12/14 17:45:01 INFO Utils: /root/.ivy2/jars/com.google.code.findbugs_jsr305-3.0.0.jar has been previously copied to /tmp/spark-e29a8518-050f-4e2f-a771-05093e49614a/userFiles-cf58fd08-1672-4d83-8a21-62d9125ada35/com.google.code.findbugs_jsr305-3.0.0.jar
+[2024-12-14T17:45:01.901+0000] {docker.py:413} INFO - 24/12/14 17:45:01 INFO Executor: Fetching file:///root/.ivy2/jars/org.apache.hadoop_hadoop-client-runtime-3.3.4.jar with timestamp 1734198299459
+[2024-12-14T17:45:01.949+0000] {docker.py:413} INFO - 24/12/14 17:45:01 INFO Utils: /root/.ivy2/jars/org.apache.hadoop_hadoop-client-runtime-3.3.4.jar has been previously copied to /tmp/spark-e29a8518-050f-4e2f-a771-05093e49614a/userFiles-cf58fd08-1672-4d83-8a21-62d9125ada35/org.apache.hadoop_hadoop-client-runtime-3.3.4.jar
+[2024-12-14T17:45:01.954+0000] {docker.py:413} INFO - 24/12/14 17:45:01 INFO Executor: Fetching file:///root/.ivy2/jars/org.checkerframework_checker-qual-3.5.0.jar with timestamp 1734198299459
+[2024-12-14T17:45:01.955+0000] {docker.py:413} INFO - 24/12/14 17:45:01 INFO Utils: /root/.ivy2/jars/org.checkerframework_checker-qual-3.5.0.jar has been previously copied to /tmp/spark-e29a8518-050f-4e2f-a771-05093e49614a/userFiles-cf58fd08-1672-4d83-8a21-62d9125ada35/org.checkerframework_checker-qual-3.5.0.jar
+[2024-12-14T17:45:01.963+0000] {docker.py:413} INFO - 24/12/14 17:45:01 INFO Executor: Fetching file:///root/.ivy2/jars/org.xerial.snappy_snappy-java-1.1.10.3.jar with timestamp 1734198299459
+[2024-12-14T17:45:01.969+0000] {docker.py:413} INFO - 24/12/14 17:45:01 INFO Utils: /root/.ivy2/jars/org.xerial.snappy_snappy-java-1.1.10.3.jar has been previously copied to /tmp/spark-e29a8518-050f-4e2f-a771-05093e49614a/userFiles-cf58fd08-1672-4d83-8a21-62d9125ada35/org.xerial.snappy_snappy-java-1.1.10.3.jar
+[2024-12-14T17:45:01.977+0000] {docker.py:413} INFO - 24/12/14 17:45:01 INFO Executor: Fetching file:///root/.ivy2/jars/org.apache.spark_spark-token-provider-kafka-0-10_2.12-3.5.0.jar with timestamp 1734198299459
+[2024-12-14T17:45:01.979+0000] {docker.py:413} INFO - 24/12/14 17:45:01 INFO Utils: /root/.ivy2/jars/org.apache.spark_spark-token-provider-kafka-0-10_2.12-3.5.0.jar has been previously copied to /tmp/spark-e29a8518-050f-4e2f-a771-05093e49614a/userFiles-cf58fd08-1672-4d83-8a21-62d9125ada35/org.apache.spark_spark-token-provider-kafka-0-10_2.12-3.5.0.jar
+[2024-12-14T17:45:01.985+0000] {docker.py:413} INFO - 24/12/14 17:45:01 INFO Executor: Fetching file:///root/.ivy2/jars/org.slf4j_slf4j-api-2.0.7.jar with timestamp 1734198299459
+[2024-12-14T17:45:01.987+0000] {docker.py:413} INFO - 24/12/14 17:45:01 INFO Utils: /root/.ivy2/jars/org.slf4j_slf4j-api-2.0.7.jar has been previously copied to /tmp/spark-e29a8518-050f-4e2f-a771-05093e49614a/userFiles-cf58fd08-1672-4d83-8a21-62d9125ada35/org.slf4j_slf4j-api-2.0.7.jar
+[2024-12-14T17:45:01.994+0000] {docker.py:413} INFO - 24/12/14 17:45:01 INFO Executor: Fetching file:///root/.ivy2/jars/org.apache.commons_commons-pool2-2.11.1.jar with timestamp 1734198299459
+[2024-12-14T17:45:01.996+0000] {docker.py:413} INFO - 24/12/14 17:45:01 INFO Utils: /root/.ivy2/jars/org.apache.commons_commons-pool2-2.11.1.jar has been previously copied to /tmp/spark-e29a8518-050f-4e2f-a771-05093e49614a/userFiles-cf58fd08-1672-4d83-8a21-62d9125ada35/org.apache.commons_commons-pool2-2.11.1.jar
+[2024-12-14T17:45:02.003+0000] {docker.py:413} INFO - 24/12/14 17:45:02 INFO Executor: Fetching file:///root/.ivy2/jars/commons-logging_commons-logging-1.1.3.jar with timestamp 1734198299459
+[2024-12-14T17:45:02.005+0000] {docker.py:413} INFO - 24/12/14 17:45:02 INFO Utils: /root/.ivy2/jars/commons-logging_commons-logging-1.1.3.jar has been previously copied to /tmp/spark-e29a8518-050f-4e2f-a771-05093e49614a/userFiles-cf58fd08-1672-4d83-8a21-62d9125ada35/commons-logging_commons-logging-1.1.3.jar
+[2024-12-14T17:45:02.011+0000] {docker.py:413} INFO - 24/12/14 17:45:02 INFO Executor: Fetching file:///root/.ivy2/jars/org.lz4_lz4-java-1.8.0.jar with timestamp 1734198299459
+[2024-12-14T17:45:02.014+0000] {docker.py:413} INFO - 24/12/14 17:45:02 INFO Utils: /root/.ivy2/jars/org.lz4_lz4-java-1.8.0.jar has been previously copied to /tmp/spark-e29a8518-050f-4e2f-a771-05093e49614a/userFiles-cf58fd08-1672-4d83-8a21-62d9125ada35/org.lz4_lz4-java-1.8.0.jar
+[2024-12-14T17:45:02.023+0000] {docker.py:413} INFO - 24/12/14 17:45:02 INFO Executor: Fetching file:///root/.ivy2/jars/org.apache.kafka_kafka-clients-3.4.1.jar with timestamp 1734198299459
+[2024-12-14T17:45:02.032+0000] {docker.py:413} INFO - 24/12/14 17:45:02 INFO Utils: /root/.ivy2/jars/org.apache.kafka_kafka-clients-3.4.1.jar has been previously copied to /tmp/spark-e29a8518-050f-4e2f-a771-05093e49614a/userFiles-cf58fd08-1672-4d83-8a21-62d9125ada35/org.apache.kafka_kafka-clients-3.4.1.jar
+[2024-12-14T17:45:02.044+0000] {docker.py:413} INFO - 24/12/14 17:45:02 INFO Executor: Fetching spark://localhost:35571/jars/com.google.code.findbugs_jsr305-3.0.0.jar with timestamp 1734198299459
+[2024-12-14T17:45:02.150+0000] {docker.py:413} INFO - 24/12/14 17:45:02 INFO TransportClientFactory: Successfully created connection to localhost/127.0.0.1:35571 after 66 ms (0 ms spent in bootstraps)
+[2024-12-14T17:45:02.173+0000] {docker.py:413} INFO - 24/12/14 17:45:02 INFO Utils: Fetching spark://localhost:35571/jars/com.google.code.findbugs_jsr305-3.0.0.jar to /tmp/spark-e29a8518-050f-4e2f-a771-05093e49614a/userFiles-cf58fd08-1672-4d83-8a21-62d9125ada35/fetchFileTemp16872472703824261056.tmp
+[2024-12-14T17:45:02.228+0000] {docker.py:413} INFO - 24/12/14 17:45:02 INFO Utils: /tmp/spark-e29a8518-050f-4e2f-a771-05093e49614a/userFiles-cf58fd08-1672-4d83-8a21-62d9125ada35/fetchFileTemp16872472703824261056.tmp has been previously copied to /tmp/spark-e29a8518-050f-4e2f-a771-05093e49614a/userFiles-cf58fd08-1672-4d83-8a21-62d9125ada35/com.google.code.findbugs_jsr305-3.0.0.jar
+[2024-12-14T17:45:02.235+0000] {docker.py:413} INFO - 24/12/14 17:45:02 INFO Executor: Adding file:/tmp/spark-e29a8518-050f-4e2f-a771-05093e49614a/userFiles-cf58fd08-1672-4d83-8a21-62d9125ada35/com.google.code.findbugs_jsr305-3.0.0.jar to class loader default
+[2024-12-14T17:45:02.237+0000] {docker.py:413} INFO - 24/12/14 17:45:02 INFO Executor: Fetching spark://localhost:35571/jars/org.apache.spark_spark-token-provider-kafka-0-10_2.12-3.5.0.jar with timestamp 1734198299459
+[2024-12-14T17:45:02.239+0000] {docker.py:413} INFO - 24/12/14 17:45:02 INFO Utils: Fetching spark://localhost:35571/jars/org.apache.spark_spark-token-provider-kafka-0-10_2.12-3.5.0.jar to /tmp/spark-e29a8518-050f-4e2f-a771-05093e49614a/userFiles-cf58fd08-1672-4d83-8a21-62d9125ada35/fetchFileTemp12822600591838166401.tmp
+[2024-12-14T17:45:02.245+0000] {docker.py:413} INFO - 24/12/14 17:45:02 INFO Utils: /tmp/spark-e29a8518-050f-4e2f-a771-05093e49614a/userFiles-cf58fd08-1672-4d83-8a21-62d9125ada35/fetchFileTemp12822600591838166401.tmp has been previously copied to /tmp/spark-e29a8518-050f-4e2f-a771-05093e49614a/userFiles-cf58fd08-1672-4d83-8a21-62d9125ada35/org.apache.spark_spark-token-provider-kafka-0-10_2.12-3.5.0.jar
+[2024-12-14T17:45:02.253+0000] {docker.py:413} INFO - 24/12/14 17:45:02 INFO Executor: Adding file:/tmp/spark-e29a8518-050f-4e2f-a771-05093e49614a/userFiles-cf58fd08-1672-4d83-8a21-62d9125ada35/org.apache.spark_spark-token-provider-kafka-0-10_2.12-3.5.0.jar to class loader default
+[2024-12-14T17:45:02.255+0000] {docker.py:413} INFO - 24/12/14 17:45:02 INFO Executor: Fetching spark://localhost:35571/jars/org.lz4_lz4-java-1.8.0.jar with timestamp 1734198299459
+[2024-12-14T17:45:02.257+0000] {docker.py:413} INFO - 24/12/14 17:45:02 INFO Utils: Fetching spark://localhost:35571/jars/org.lz4_lz4-java-1.8.0.jar to /tmp/spark-e29a8518-050f-4e2f-a771-05093e49614a/userFiles-cf58fd08-1672-4d83-8a21-62d9125ada35/fetchFileTemp15046095877085197064.tmp
+[2024-12-14T17:45:02.268+0000] {docker.py:413} INFO - 24/12/14 17:45:02 INFO Utils: /tmp/spark-e29a8518-050f-4e2f-a771-05093e49614a/userFiles-cf58fd08-1672-4d83-8a21-62d9125ada35/fetchFileTemp15046095877085197064.tmp has been previously copied to /tmp/spark-e29a8518-050f-4e2f-a771-05093e49614a/userFiles-cf58fd08-1672-4d83-8a21-62d9125ada35/org.lz4_lz4-java-1.8.0.jar
+[2024-12-14T17:45:02.275+0000] {docker.py:413} INFO - 24/12/14 17:45:02 INFO Executor: Adding file:/tmp/spark-e29a8518-050f-4e2f-a771-05093e49614a/userFiles-cf58fd08-1672-4d83-8a21-62d9125ada35/org.lz4_lz4-java-1.8.0.jar to class loader default
+[2024-12-14T17:45:02.276+0000] {docker.py:413} INFO - 24/12/14 17:45:02 INFO Executor: Fetching spark://localhost:35571/jars/org.***ql_***ql-42.5.4.jar with timestamp 1734198299459
+[2024-12-14T17:45:02.278+0000] {docker.py:413} INFO - 24/12/14 17:45:02 INFO Utils: Fetching spark://localhost:35571/jars/org.***ql_***ql-42.5.4.jar to /tmp/spark-e29a8518-050f-4e2f-a771-05093e49614a/userFiles-cf58fd08-1672-4d83-8a21-62d9125ada35/fetchFileTemp695178627816657542.tmp
+[2024-12-14T17:45:02.298+0000] {docker.py:413} INFO - 24/12/14 17:45:02 INFO Utils: /tmp/spark-e29a8518-050f-4e2f-a771-05093e49614a/userFiles-cf58fd08-1672-4d83-8a21-62d9125ada35/fetchFileTemp695178627816657542.tmp has been previously copied to /tmp/spark-e29a8518-050f-4e2f-a771-05093e49614a/userFiles-cf58fd08-1672-4d83-8a21-62d9125ada35/org.***ql_***ql-42.5.4.jar
+[2024-12-14T17:45:02.306+0000] {docker.py:413} INFO - 24/12/14 17:45:02 INFO Executor: Adding file:/tmp/spark-e29a8518-050f-4e2f-a771-05093e49614a/userFiles-cf58fd08-1672-4d83-8a21-62d9125ada35/org.***ql_***ql-42.5.4.jar to class loader default
+[2024-12-14T17:45:02.308+0000] {docker.py:413} INFO - 24/12/14 17:45:02 INFO Executor: Fetching spark://localhost:35571/jars/org.slf4j_slf4j-api-2.0.7.jar with timestamp 1734198299459
+[2024-12-14T17:45:02.310+0000] {docker.py:413} INFO - 24/12/14 17:45:02 INFO Utils: Fetching spark://localhost:35571/jars/org.slf4j_slf4j-api-2.0.7.jar to /tmp/spark-e29a8518-050f-4e2f-a771-05093e49614a/userFiles-cf58fd08-1672-4d83-8a21-62d9125ada35/fetchFileTemp14423828651748943439.tmp
+[2024-12-14T17:45:02.313+0000] {docker.py:413} INFO - 24/12/14 17:45:02 INFO Utils: /tmp/spark-e29a8518-050f-4e2f-a771-05093e49614a/userFiles-cf58fd08-1672-4d83-8a21-62d9125ada35/fetchFileTemp14423828651748943439.tmp has been previously copied to /tmp/spark-e29a8518-050f-4e2f-a771-05093e49614a/userFiles-cf58fd08-1672-4d83-8a21-62d9125ada35/org.slf4j_slf4j-api-2.0.7.jar
+[2024-12-14T17:45:02.319+0000] {docker.py:413} INFO - 24/12/14 17:45:02 INFO Executor: Adding file:/tmp/spark-e29a8518-050f-4e2f-a771-05093e49614a/userFiles-cf58fd08-1672-4d83-8a21-62d9125ada35/org.slf4j_slf4j-api-2.0.7.jar to class loader default
+[2024-12-14T17:45:02.321+0000] {docker.py:413} INFO - 24/12/14 17:45:02 INFO Executor: Fetching spark://localhost:35571/jars/org.apache.kafka_kafka-clients-3.4.1.jar with timestamp 1734198299459
+[2024-12-14T17:45:02.322+0000] {docker.py:413} INFO - 24/12/14 17:45:02 INFO Utils: Fetching spark://localhost:35571/jars/org.apache.kafka_kafka-clients-3.4.1.jar to /tmp/spark-e29a8518-050f-4e2f-a771-05093e49614a/userFiles-cf58fd08-1672-4d83-8a21-62d9125ada35/fetchFileTemp17100426108517196433.tmp
+[2024-12-14T17:45:02.368+0000] {docker.py:413} INFO - 24/12/14 17:45:02 INFO Utils: /tmp/spark-e29a8518-050f-4e2f-a771-05093e49614a/userFiles-cf58fd08-1672-4d83-8a21-62d9125ada35/fetchFileTemp17100426108517196433.tmp has been previously copied to /tmp/spark-e29a8518-050f-4e2f-a771-05093e49614a/userFiles-cf58fd08-1672-4d83-8a21-62d9125ada35/org.apache.kafka_kafka-clients-3.4.1.jar
+[2024-12-14T17:45:02.376+0000] {docker.py:413} INFO - 24/12/14 17:45:02 INFO Executor: Adding file:/tmp/spark-e29a8518-050f-4e2f-a771-05093e49614a/userFiles-cf58fd08-1672-4d83-8a21-62d9125ada35/org.apache.kafka_kafka-clients-3.4.1.jar to class loader default
+[2024-12-14T17:45:02.377+0000] {docker.py:413} INFO - 24/12/14 17:45:02 INFO Executor: Fetching spark://localhost:35571/jars/org.xerial.snappy_snappy-java-1.1.10.3.jar with timestamp 1734198299459
+[2024-12-14T17:45:02.379+0000] {docker.py:413} INFO - 24/12/14 17:45:02 INFO Utils: Fetching spark://localhost:35571/jars/org.xerial.snappy_snappy-java-1.1.10.3.jar to /tmp/spark-e29a8518-050f-4e2f-a771-05093e49614a/userFiles-cf58fd08-1672-4d83-8a21-62d9125ada35/fetchFileTemp5591677156685879206.tmp
+[2024-12-14T17:45:02.402+0000] {docker.py:413} INFO - 24/12/14 17:45:02 INFO Utils: /tmp/spark-e29a8518-050f-4e2f-a771-05093e49614a/userFiles-cf58fd08-1672-4d83-8a21-62d9125ada35/fetchFileTemp5591677156685879206.tmp has been previously copied to /tmp/spark-e29a8518-050f-4e2f-a771-05093e49614a/userFiles-cf58fd08-1672-4d83-8a21-62d9125ada35/org.xerial.snappy_snappy-java-1.1.10.3.jar
+[2024-12-14T17:45:02.410+0000] {docker.py:413} INFO - 24/12/14 17:45:02 INFO Executor: Adding file:/tmp/spark-e29a8518-050f-4e2f-a771-05093e49614a/userFiles-cf58fd08-1672-4d83-8a21-62d9125ada35/org.xerial.snappy_snappy-java-1.1.10.3.jar to class loader default
+[2024-12-14T17:45:02.412+0000] {docker.py:413} INFO - 24/12/14 17:45:02 INFO Executor: Fetching spark://localhost:35571/jars/commons-logging_commons-logging-1.1.3.jar with timestamp 1734198299459
+[2024-12-14T17:45:02.413+0000] {docker.py:413} INFO - 24/12/14 17:45:02 INFO Utils: Fetching spark://localhost:35571/jars/commons-logging_commons-logging-1.1.3.jar to /tmp/spark-e29a8518-050f-4e2f-a771-05093e49614a/userFiles-cf58fd08-1672-4d83-8a21-62d9125ada35/fetchFileTemp13352196976369823047.tmp
+[2024-12-14T17:45:02.417+0000] {docker.py:413} INFO - 24/12/14 17:45:02 INFO Utils: /tmp/spark-e29a8518-050f-4e2f-a771-05093e49614a/userFiles-cf58fd08-1672-4d83-8a21-62d9125ada35/fetchFileTemp13352196976369823047.tmp has been previously copied to /tmp/spark-e29a8518-050f-4e2f-a771-05093e49614a/userFiles-cf58fd08-1672-4d83-8a21-62d9125ada35/commons-logging_commons-logging-1.1.3.jar
+[2024-12-14T17:45:02.425+0000] {docker.py:413} INFO - 24/12/14 17:45:02 INFO Executor: Adding file:/tmp/spark-e29a8518-050f-4e2f-a771-05093e49614a/userFiles-cf58fd08-1672-4d83-8a21-62d9125ada35/commons-logging_commons-logging-1.1.3.jar to class loader default
+[2024-12-14T17:45:02.427+0000] {docker.py:413} INFO - 24/12/14 17:45:02 INFO Executor: Fetching spark://localhost:35571/jars/org.apache.commons_commons-pool2-2.11.1.jar with timestamp 1734198299459
+[2024-12-14T17:45:02.429+0000] {docker.py:413} INFO - 24/12/14 17:45:02 INFO Utils: Fetching spark://localhost:35571/jars/org.apache.commons_commons-pool2-2.11.1.jar to /tmp/spark-e29a8518-050f-4e2f-a771-05093e49614a/userFiles-cf58fd08-1672-4d83-8a21-62d9125ada35/fetchFileTemp6459471087597545628.tmp
+[2024-12-14T17:45:02.432+0000] {docker.py:413} INFO - 24/12/14 17:45:02 INFO Utils: /tmp/spark-e29a8518-050f-4e2f-a771-05093e49614a/userFiles-cf58fd08-1672-4d83-8a21-62d9125ada35/fetchFileTemp6459471087597545628.tmp has been previously copied to /tmp/spark-e29a8518-050f-4e2f-a771-05093e49614a/userFiles-cf58fd08-1672-4d83-8a21-62d9125ada35/org.apache.commons_commons-pool2-2.11.1.jar
+[2024-12-14T17:45:02.439+0000] {docker.py:413} INFO - 24/12/14 17:45:02 INFO Executor: Adding file:/tmp/spark-e29a8518-050f-4e2f-a771-05093e49614a/userFiles-cf58fd08-1672-4d83-8a21-62d9125ada35/org.apache.commons_commons-pool2-2.11.1.jar to class loader default
+[2024-12-14T17:45:02.443+0000] {docker.py:413} INFO - 24/12/14 17:45:02 INFO Executor: Fetching spark://localhost:35571/jars/org.apache.hadoop_hadoop-client-api-3.3.4.jar with timestamp 1734198299459
+[2024-12-14T17:45:02.444+0000] {docker.py:413} INFO - 24/12/14 17:45:02 INFO Utils: Fetching spark://localhost:35571/jars/org.apache.hadoop_hadoop-client-api-3.3.4.jar to /tmp/spark-e29a8518-050f-4e2f-a771-05093e49614a/userFiles-cf58fd08-1672-4d83-8a21-62d9125ada35/fetchFileTemp15364397578116846780.tmp
+[2024-12-14T17:45:02.573+0000] {docker.py:413} INFO - 24/12/14 17:45:02 INFO Utils: /tmp/spark-e29a8518-050f-4e2f-a771-05093e49614a/userFiles-cf58fd08-1672-4d83-8a21-62d9125ada35/fetchFileTemp15364397578116846780.tmp has been previously copied to /tmp/spark-e29a8518-050f-4e2f-a771-05093e49614a/userFiles-cf58fd08-1672-4d83-8a21-62d9125ada35/org.apache.hadoop_hadoop-client-api-3.3.4.jar
+[2024-12-14T17:45:02.583+0000] {docker.py:413} INFO - 24/12/14 17:45:02 INFO Executor: Adding file:/tmp/spark-e29a8518-050f-4e2f-a771-05093e49614a/userFiles-cf58fd08-1672-4d83-8a21-62d9125ada35/org.apache.hadoop_hadoop-client-api-3.3.4.jar to class loader default
+[2024-12-14T17:45:02.585+0000] {docker.py:413} INFO - 24/12/14 17:45:02 INFO Executor: Fetching spark://localhost:35571/jars/org.apache.spark_spark-sql-kafka-0-10_2.12-3.5.0.jar with timestamp 1734198299459
+[2024-12-14T17:45:02.586+0000] {docker.py:413} INFO - 24/12/14 17:45:02 INFO Utils: Fetching spark://localhost:35571/jars/org.apache.spark_spark-sql-kafka-0-10_2.12-3.5.0.jar to /tmp/spark-e29a8518-050f-4e2f-a771-05093e49614a/userFiles-cf58fd08-1672-4d83-8a21-62d9125ada35/fetchFileTemp6458152361510932429.tmp
+[2024-12-14T17:45:02.591+0000] {docker.py:413} INFO - 24/12/14 17:45:02 INFO Utils: /tmp/spark-e29a8518-050f-4e2f-a771-05093e49614a/userFiles-cf58fd08-1672-4d83-8a21-62d9125ada35/fetchFileTemp6458152361510932429.tmp has been previously copied to /tmp/spark-e29a8518-050f-4e2f-a771-05093e49614a/userFiles-cf58fd08-1672-4d83-8a21-62d9125ada35/org.apache.spark_spark-sql-kafka-0-10_2.12-3.5.0.jar
+[2024-12-14T17:45:02.599+0000] {docker.py:413} INFO - 24/12/14 17:45:02 INFO Executor: Adding file:/tmp/spark-e29a8518-050f-4e2f-a771-05093e49614a/userFiles-cf58fd08-1672-4d83-8a21-62d9125ada35/org.apache.spark_spark-sql-kafka-0-10_2.12-3.5.0.jar to class loader default
+[2024-12-14T17:45:02.601+0000] {docker.py:413} INFO - 24/12/14 17:45:02 INFO Executor: Fetching spark://localhost:35571/jars/org.checkerframework_checker-qual-3.5.0.jar with timestamp 1734198299459
+[2024-12-14T17:45:02.604+0000] {docker.py:413} INFO - 24/12/14 17:45:02 INFO Utils: Fetching spark://localhost:35571/jars/org.checkerframework_checker-qual-3.5.0.jar to /tmp/spark-e29a8518-050f-4e2f-a771-05093e49614a/userFiles-cf58fd08-1672-4d83-8a21-62d9125ada35/fetchFileTemp9635281324361345930.tmp
+[2024-12-14T17:45:02.606+0000] {docker.py:413} INFO - 24/12/14 17:45:02 INFO Utils: /tmp/spark-e29a8518-050f-4e2f-a771-05093e49614a/userFiles-cf58fd08-1672-4d83-8a21-62d9125ada35/fetchFileTemp9635281324361345930.tmp has been previously copied to /tmp/spark-e29a8518-050f-4e2f-a771-05093e49614a/userFiles-cf58fd08-1672-4d83-8a21-62d9125ada35/org.checkerframework_checker-qual-3.5.0.jar
+[2024-12-14T17:45:02.614+0000] {docker.py:413} INFO - 24/12/14 17:45:02 INFO Executor: Adding file:/tmp/spark-e29a8518-050f-4e2f-a771-05093e49614a/userFiles-cf58fd08-1672-4d83-8a21-62d9125ada35/org.checkerframework_checker-qual-3.5.0.jar to class loader default
+[2024-12-14T17:45:02.618+0000] {docker.py:413} INFO - 24/12/14 17:45:02 INFO Executor: Fetching spark://localhost:35571/jars/org.apache.hadoop_hadoop-client-runtime-3.3.4.jar with timestamp 1734198299459
+[2024-12-14T17:45:02.619+0000] {docker.py:413} INFO - 24/12/14 17:45:02 INFO Utils: Fetching spark://localhost:35571/jars/org.apache.hadoop_hadoop-client-runtime-3.3.4.jar to /tmp/spark-e29a8518-050f-4e2f-a771-05093e49614a/userFiles-cf58fd08-1672-4d83-8a21-62d9125ada35/fetchFileTemp6218451213714614180.tmp
+[2024-12-14T17:45:02.799+0000] {docker.py:413} INFO - 24/12/14 17:45:02 INFO Utils: /tmp/spark-e29a8518-050f-4e2f-a771-05093e49614a/userFiles-cf58fd08-1672-4d83-8a21-62d9125ada35/fetchFileTemp6218451213714614180.tmp has been previously copied to /tmp/spark-e29a8518-050f-4e2f-a771-05093e49614a/userFiles-cf58fd08-1672-4d83-8a21-62d9125ada35/org.apache.hadoop_hadoop-client-runtime-3.3.4.jar
+[2024-12-14T17:45:02.814+0000] {docker.py:413} INFO - 24/12/14 17:45:02 INFO Executor: Adding file:/tmp/spark-e29a8518-050f-4e2f-a771-05093e49614a/userFiles-cf58fd08-1672-4d83-8a21-62d9125ada35/org.apache.hadoop_hadoop-client-runtime-3.3.4.jar to class loader default
+[2024-12-14T17:45:02.834+0000] {docker.py:413} INFO - 24/12/14 17:45:02 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 33517.
+[2024-12-14T17:45:02.836+0000] {docker.py:413} INFO - 24/12/14 17:45:02 INFO NettyBlockTransferService: Server created on localhost:33517
+[2024-12-14T17:45:02.840+0000] {docker.py:413} INFO - 24/12/14 17:45:02 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+[2024-12-14T17:45:02.859+0000] {docker.py:413} INFO - 24/12/14 17:45:02 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, localhost, 33517, None)
+[2024-12-14T17:45:02.868+0000] {docker.py:413} INFO - 24/12/14 17:45:02 INFO BlockManagerMasterEndpoint: Registering block manager localhost:33517 with 434.4 MiB RAM, BlockManagerId(driver, localhost, 33517, None)
+[2024-12-14T17:45:02.877+0000] {docker.py:413} INFO - 24/12/14 17:45:02 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, localhost, 33517, None)
+[2024-12-14T17:45:02.881+0000] {docker.py:413} INFO - 24/12/14 17:45:02 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, localhost, 33517, None)
+[2024-12-14T17:45:04.071+0000] {docker.py:413} INFO - 2024-12-14 17:45:04,068 [INFO] Successfully created Spark session
+[2024-12-14T17:45:04.072+0000] {docker.py:413} INFO - 2024-12-14 17:45:04,069 [INFO] Initializing RedditTransformer...
+[2024-12-14T17:45:04.075+0000] {docker.py:413} INFO - 2024-12-14 17:45:04,069 [INFO] Loading spaCy model...
+[2024-12-14T17:45:06.137+0000] {docker.py:413} INFO - 2024-12-14 17:45:06,134 [INFO] Successfully loaded spaCy model
+2024-12-14 17:45:06,134 [INFO] Initialized database configuration with host: host.docker.internal
+2024-12-14 17:45:06,134 [INFO] Schema initialized
+2024-12-14 17:45:06,134 [INFO] Expected schema: StructType([StructField('id', StringType(), True), StructField('title', StringType(), True), StructField('author', StringType(), True), StructField('post_time', FloatType(), True), StructField('upvotes', IntegerType(), True), StructField('downvotes', IntegerType(), True), StructField('num_comments', IntegerType(), True), StructField('score', IntegerType(), True), StructField('selftext', StringType(), True), StructField('first_level_comments_count', IntegerType(), True), StructField('second_level_comments_count', IntegerType(), True), StructField('text', StringType(), True), StructField('subreddit', StringType(), True), StructField('processing_timestamp', StringType(), True)])
+2024-12-14 17:45:06,135 [INFO] Database config: jdbc:***ql://host.docker.internal:5432/reddit-data
+2024-12-14 17:45:06,135 [INFO] Setting up Kafka stream reader with broker: kafka:9092
+[2024-12-14T17:45:06.156+0000] {docker.py:413} INFO - 24/12/14 17:45:06 INFO SharedState: Setting hive.metastore.warehouse.dir ('null') to the value of spark.sql.warehouse.dir.
+[2024-12-14T17:45:06.162+0000] {docker.py:413} INFO - 24/12/14 17:45:06 INFO SharedState: Warehouse path is 'file:/opt/bitnami/spark/spark-warehouse'.
+[2024-12-14T17:45:08.551+0000] {docker.py:413} INFO - 2024-12-14 17:45:08,538 [ERROR] Error in stream processing: ending offset not valid in streaming queries
+Traceback (most recent call last):
+  File "/opt/bitnami/spark/spark_streaming.py", line 251, in process_stream
+    .load()
+     ^^^^^^
+  File "/opt/bitnami/spark/python/lib/pyspark.zip/pyspark/sql/streaming/readwriter.py", line 304, in load
+    return self._df(self._jreader.load())
+                    ^^^^^^^^^^^^^^^^^^^^
+  File "/opt/bitnami/spark/python/lib/py4j-0.10.9.7-src.zip/py4j/java_gateway.py", line 1322, in __call__
+    return_value = get_return_value(
+                   ^^^^^^^^^^^^^^^^^
+  File "/opt/bitnami/spark/python/lib/pyspark.zip/pyspark/errors/exceptions/captured.py", line 185, in deco
+    raise converted from None
+pyspark.errors.exceptions.captured.IllegalArgumentException: ending offset not valid in streaming queries
+[2024-12-14T17:45:08.567+0000] {docker.py:413} INFO - 2024-12-14 17:45:08,558 [ERROR] Critical error in main: ending offset not valid in streaming queries
+Traceback (most recent call last):
+  File "/opt/bitnami/spark/spark_streaming.py", line 352, in main
+    process_stream()
+  File "/opt/bitnami/spark/spark_streaming.py", line 344, in process_stream
+    raise e
+  File "/opt/bitnami/spark/spark_streaming.py", line 251, in process_stream
+    .load()
+     ^^^^^^
+  File "/opt/bitnami/spark/python/lib/pyspark.zip/pyspark/sql/streaming/readwriter.py", line 304, in load
+    return self._df(self._jreader.load())
+                    ^^^^^^^^^^^^^^^^^^^^
+  File "/opt/bitnami/spark/python/lib/py4j-0.10.9.7-src.zip/py4j/java_gateway.py", line 1322, in __call__
+    return_value = get_return_value(
+                   ^^^^^^^^^^^^^^^^^
+  File "/opt/bitnami/spark/python/lib/pyspark.zip/pyspark/errors/exceptions/captured.py", line 185, in deco
+    raise converted from None
+pyspark.errors.exceptions.captured.IllegalArgumentException: ending offset not valid in streaming queries
+2024-12-14 17:45:08,564 [INFO] Cleaning up resources...
+Traceback (most recent call last):
+  File "/opt/bitnami/spark/spark_streaming.py", line 362, in <module>
+[2024-12-14T17:45:08.568+0000] {docker.py:413} INFO - main()
+  File "/opt/bitnami/spark/spark_streaming.py", line 357, in main
+[2024-12-14T17:45:08.570+0000] {docker.py:413} INFO - raise e
+  File "/opt/bitnami/spark/spark_streaming.py", line 352, in main
+[2024-12-14T17:45:08.571+0000] {docker.py:413} INFO - process_stream()
+  File "/opt/bitnami/spark/spark_streaming.py", line 344, in process_stream
+[2024-12-14T17:45:08.572+0000] {docker.py:413} INFO - raise e
+  File "/opt/bitnami/spark/spark_streaming.py", line 251, in process_stream
+[2024-12-14T17:45:08.574+0000] {docker.py:413} INFO - .load()
+     ^^^^^^
+  File "/opt/bitnami/spark/python/lib/pyspark.zip/pyspark/sql/streaming/readwriter.py", line 304, in load
+[2024-12-14T17:45:08.575+0000] {docker.py:413} INFO - File "/opt/bitnami/spark/python/lib/py4j-0.10.9.7-src.zip/py4j/java_gateway.py", line 1322, in __call__
+[2024-12-14T17:45:08.576+0000] {docker.py:413} INFO - File "/opt/bitnami/spark/python/lib/pyspark.zip/pyspark/errors/exceptions/captured.py", line 185, in deco
+[2024-12-14T17:45:08.577+0000] {docker.py:413} INFO - pyspark.errors.exceptions.captured.IllegalArgumentException
+[2024-12-14T17:45:08.580+0000] {docker.py:413} INFO - : ending offset not valid in streaming queries
+[2024-12-14T17:45:08.582+0000] {docker.py:413} INFO - 2024-12-14 17:45:08,579 [INFO] Closing down clientserver connection
+[2024-12-14T17:45:09.064+0000] {docker.py:413} INFO - 24/12/14 17:45:09 INFO SparkContext: Invoking stop() from shutdown hook
+[2024-12-14T17:45:09.065+0000] {docker.py:413} INFO - 24/12/14 17:45:09 INFO SparkContext: SparkContext is stopping with exitCode 0.
+[2024-12-14T17:45:09.100+0000] {docker.py:413} INFO - 24/12/14 17:45:09 INFO SparkUI: Stopped Spark web UI at http://localhost:4040
+[2024-12-14T17:45:09.141+0000] {docker.py:413} INFO - 24/12/14 17:45:09 INFO MapOutputTrackerMasterEndpoint: MapOutputTrackerMasterEndpoint stopped!
+[2024-12-14T17:45:09.169+0000] {docker.py:413} INFO - 24/12/14 17:45:09 INFO MemoryStore: MemoryStore cleared
+[2024-12-14T17:45:09.171+0000] {docker.py:413} INFO - 24/12/14 17:45:09 INFO BlockManager: BlockManager stopped
+[2024-12-14T17:45:09.185+0000] {docker.py:413} INFO - 24/12/14 17:45:09 INFO BlockManagerMaster: BlockManagerMaster stopped
+[2024-12-14T17:45:09.196+0000] {docker.py:413} INFO - 24/12/14 17:45:09 INFO OutputCommitCoordinator$OutputCommitCoordinatorEndpoint: OutputCommitCoordinator stopped!
+[2024-12-14T17:45:09.239+0000] {docker.py:413} INFO - 24/12/14 17:45:09 INFO SparkContext: Successfully stopped SparkContext
+[2024-12-14T17:45:09.242+0000] {docker.py:413} INFO - 24/12/14 17:45:09 INFO ShutdownHookManager: Shutdown hook called
+[2024-12-14T17:45:09.243+0000] {docker.py:413} INFO - 24/12/14 17:45:09 INFO ShutdownHookManager: Deleting directory /tmp/spark-e29a8518-050f-4e2f-a771-05093e49614a
+[2024-12-14T17:45:09.250+0000] {docker.py:413} INFO - 24/12/14 17:45:09 INFO ShutdownHookManager: Deleting directory /tmp/spark-91777d2b-ea8d-4681-909b-03b64c560b6e
+[2024-12-14T17:45:09.260+0000] {docker.py:413} INFO - 24/12/14 17:45:09 INFO ShutdownHookManager: Deleting directory /tmp/spark-e29a8518-050f-4e2f-a771-05093e49614a/pyspark-2596e893-d1df-4155-a766-b9351f613385
+[2024-12-14T17:45:09.864+0000] {taskinstance.py:1937} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/docker/api/client.py", line 268, in _raise_for_status
+    response.raise_for_status()
+  File "/home/airflow/.local/lib/python3.8/site-packages/requests/models.py", line 1021, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: http://docker-proxy:2375/v1.47/containers/create
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/docker/operators/docker.py", line 348, in _run_image
+    return self._run_image_with_mounts([*self.mounts, tmp_mount], add_tmp_variable=True)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/docker/operators/docker.py", line 375, in _run_image_with_mounts
+    self.container = self.cli.create_container(
+  File "/home/airflow/.local/lib/python3.8/site-packages/docker/api/container.py", line 431, in create_container
+    return self.create_container_from_config(config, name, platform)
+  File "/home/airflow/.local/lib/python3.8/site-packages/docker/api/container.py", line 448, in create_container_from_config
+    return self._result(res, True)
+  File "/home/airflow/.local/lib/python3.8/site-packages/docker/api/client.py", line 274, in _result
+    self._raise_for_status(response)
+  File "/home/airflow/.local/lib/python3.8/site-packages/docker/api/client.py", line 270, in _raise_for_status
+    raise create_api_error_from_http_exception(e) from e
+  File "/home/airflow/.local/lib/python3.8/site-packages/docker/errors.py", line 39, in create_api_error_from_http_exception
+    raise cls(e, response=response, explanation=explanation) from e
+docker.errors.APIError: 400 Client Error for http://docker-proxy:2375/v1.47/containers/create: Bad Request ("invalid mount config for type "bind": bind source path does not exist: /tmp/airflowtmpaexr_inh")
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/docker/operators/docker.py", line 486, in execute
+    return self._run_image()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/docker/operators/docker.py", line 357, in _run_image
+    return self._run_image_with_mounts(self.mounts, add_tmp_variable=False)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/docker/operators/docker.py", line 421, in _run_image_with_mounts
+    raise DockerContainerFailedException(f"Docker container failed: {result!r}", logs=log_lines)
+airflow.providers.docker.exceptions.DockerContainerFailedException: Docker container failed: {'StatusCode': 1}
+[2024-12-14T17:45:09.886+0000] {taskinstance.py:1400} INFO - Marking task as UP_FOR_RETRY. dag_id=kafka_spark_dag, task_id=pyspark_consumer, execution_date=20241214T174212, start_date=20241214T174307, end_date=20241214T174509
+[2024-12-14T17:45:09.923+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 4 for task pyspark_consumer (Docker container failed: {'StatusCode': 1}; 1650)
+[2024-12-14T17:45:09.952+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2024-12-14T17:45:10.008+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check

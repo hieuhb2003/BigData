@@ -1,0 +1,27 @@
+[2024-12-14T11:28:45.559+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: kafka_spark_dag.kafka_data_stream scheduled__2024-12-14T11:13:25.877313+00:00 [queued]>
+[2024-12-14T11:28:45.575+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: kafka_spark_dag.kafka_data_stream scheduled__2024-12-14T11:13:25.877313+00:00 [queued]>
+[2024-12-14T11:28:45.576+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 2
+[2024-12-14T11:28:45.603+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): kafka_data_stream> on 2024-12-14 11:13:25.877313+00:00
+[2024-12-14T11:28:45.613+0000] {standard_task_runner.py:57} INFO - Started process 693 to run task
+[2024-12-14T11:28:45.621+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'kafka_spark_dag', 'kafka_data_stream', 'scheduled__2024-12-14T11:13:25.877313+00:00', '--job-id', '2', '--raw', '--subdir', 'DAGS_FOLDER/dag_kafka_spark.py', '--cfg-path', '/tmp/tmpl_f4wwnq']
+[2024-12-14T11:28:45.628+0000] {standard_task_runner.py:85} INFO - Job 2: Subtask kafka_data_stream
+[2024-12-14T11:28:45.730+0000] {task_command.py:416} INFO - Running <TaskInstance: kafka_spark_dag.kafka_data_stream scheduled__2024-12-14T11:13:25.877313+00:00 [running]> on host 0567991c61ee
+[2024-12-14T11:28:45.867+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='kafka_spark_dag' AIRFLOW_CTX_TASK_ID='kafka_data_stream' AIRFLOW_CTX_EXECUTION_DATE='2024-12-14T11:13:25.877313+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-12-14T11:13:25.877313+00:00'
+[2024-12-14T11:28:46.314+0000] {conn.py:380} INFO - <BrokerConnection node_id=bootstrap-0 host=kafka:9092 <connecting> [IPv4 ('172.18.0.2', 9092)]>: connecting to kafka:9092 [('172.18.0.2', 9092) IPv4]
+[2024-12-14T11:28:46.316+0000] {conn.py:1205} INFO - Probing node bootstrap-0 broker version
+[2024-12-14T11:28:46.319+0000] {conn.py:410} INFO - <BrokerConnection node_id=bootstrap-0 host=kafka:9092 <connecting> [IPv4 ('172.18.0.2', 9092)]>: Connection complete.
+[2024-12-14T11:28:46.432+0000] {conn.py:1267} INFO - Broker version identified as 2.5.0
+[2024-12-14T11:28:46.433+0000] {conn.py:1268} INFO - Set configuration api_version=(2, 5, 0) to skip auto check_version requests on startup
+[2024-12-14T11:29:15.084+0000] {kafka_stream_data.py:95} INFO - Fetched 25 submissions from r/soccer
+[2024-12-14T11:29:37.671+0000] {kafka_stream_data.py:95} INFO - Fetched 25 submissions from r/football
+[2024-12-14T11:29:37.672+0000] {kafka_stream_data.py:113} INFO - Fetched 50 submissions from Reddit
+[2024-12-14T11:29:37.685+0000] {conn.py:380} INFO - <BrokerConnection node_id=0 host=kafka:9092 <connecting> [IPv4 ('172.18.0.2', 9092)]>: connecting to kafka:9092 [('172.18.0.2', 9092) IPv4]
+[2024-12-14T11:29:37.687+0000] {conn.py:410} INFO - <BrokerConnection node_id=0 host=kafka:9092 <connecting> [IPv4 ('172.18.0.2', 9092)]>: Connection complete.
+[2024-12-14T11:29:37.689+0000] {conn.py:919} INFO - <BrokerConnection node_id=bootstrap-0 host=kafka:9092 <connected> [IPv4 ('172.18.0.2', 9092)]>: Closing connection. 
+[2024-12-14T11:29:37.819+0000] {kafka_stream_data.py:123} INFO - Successfully sent data to Kafka
+[2024-12-14T11:29:37.821+0000] {kafka.py:483} INFO - Closing the Kafka producer with 9223372036.0 secs timeout.
+[2024-12-14T11:29:37.826+0000] {conn.py:919} INFO - <BrokerConnection node_id=0 host=kafka:9092 <connected> [IPv4 ('172.18.0.2', 9092)]>: Closing connection. 
+[2024-12-14T11:29:37.831+0000] {python.py:194} INFO - Done. Returned value was: True
+[2024-12-14T11:29:37.909+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=kafka_spark_dag, task_id=kafka_data_stream, execution_date=20241214T111325, start_date=20241214T112845, end_date=20241214T112937
+[2024-12-14T11:29:38.006+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2024-12-14T11:29:38.077+0000] {taskinstance.py:2778} INFO - 1 downstream tasks scheduled from follow-on schedule check

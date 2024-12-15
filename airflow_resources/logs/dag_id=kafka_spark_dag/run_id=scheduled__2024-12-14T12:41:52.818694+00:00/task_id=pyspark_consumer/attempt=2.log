@@ -1,0 +1,42 @@
+[2024-12-14T12:59:12.878+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: kafka_spark_dag.pyspark_consumer scheduled__2024-12-14T12:41:52.818694+00:00 [queued]>
+[2024-12-14T12:59:12.897+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: kafka_spark_dag.pyspark_consumer scheduled__2024-12-14T12:41:52.818694+00:00 [queued]>
+[2024-12-14T12:59:12.899+0000] {taskinstance.py:1361} INFO - Starting attempt 2 of 2
+[2024-12-14T12:59:12.929+0000] {taskinstance.py:1382} INFO - Executing <Task(DockerOperator): pyspark_consumer> on 2024-12-14 12:41:52.818694+00:00
+[2024-12-14T12:59:12.940+0000] {standard_task_runner.py:57} INFO - Started process 2153 to run task
+[2024-12-14T12:59:12.947+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'kafka_spark_dag', 'pyspark_consumer', 'scheduled__2024-12-14T12:41:52.818694+00:00', '--job-id', '5', '--raw', '--subdir', 'DAGS_FOLDER/dag_kafka_spark.py', '--cfg-path', '/tmp/tmp1pjki68u']
+[2024-12-14T12:59:12.953+0000] {standard_task_runner.py:85} INFO - Job 5: Subtask pyspark_consumer
+[2024-12-14T12:59:13.054+0000] {task_command.py:416} INFO - Running <TaskInstance: kafka_spark_dag.pyspark_consumer scheduled__2024-12-14T12:41:52.818694+00:00 [running]> on host 3a9b0faeecd4
+[2024-12-14T12:59:13.219+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='kafka_spark_dag' AIRFLOW_CTX_TASK_ID='pyspark_consumer' AIRFLOW_CTX_EXECUTION_DATE='2024-12-14T12:41:52.818694+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-12-14T12:41:52.818694+00:00'
+[2024-12-14T12:59:13.339+0000] {docker.py:343} INFO - Starting docker container from image reddit-consumer/spark:latest
+[2024-12-14T12:59:13.365+0000] {taskinstance.py:1937} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/docker/api/client.py", line 268, in _raise_for_status
+    response.raise_for_status()
+  File "/home/airflow/.local/lib/python3.8/site-packages/requests/models.py", line 1021, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: http://docker-proxy:2375/v1.47/containers/create
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/docker/operators/docker.py", line 486, in execute
+    return self._run_image()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/docker/operators/docker.py", line 360, in _run_image
+    return self._run_image_with_mounts(self.mounts, add_tmp_variable=False)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/docker/operators/docker.py", line 375, in _run_image_with_mounts
+    self.container = self.cli.create_container(
+  File "/home/airflow/.local/lib/python3.8/site-packages/docker/api/container.py", line 431, in create_container
+    return self.create_container_from_config(config, name, platform)
+  File "/home/airflow/.local/lib/python3.8/site-packages/docker/api/container.py", line 448, in create_container_from_config
+    return self._result(res, True)
+  File "/home/airflow/.local/lib/python3.8/site-packages/docker/api/client.py", line 274, in _result
+    self._raise_for_status(response)
+  File "/home/airflow/.local/lib/python3.8/site-packages/docker/api/client.py", line 270, in _raise_for_status
+    raise create_api_error_from_http_exception(e) from e
+  File "/home/airflow/.local/lib/python3.8/site-packages/docker/errors.py", line 39, in create_api_error_from_http_exception
+    raise cls(e, response=response, explanation=explanation) from e
+docker.errors.APIError: 400 Client Error for http://docker-proxy:2375/v1.47/containers/create: Bad Request ("invalid mount config for type "bind": invalid mount path: './temp' mount path must be absolute")
+[2024-12-14T12:59:13.391+0000] {taskinstance.py:1400} INFO - Marking task as FAILED. dag_id=kafka_spark_dag, task_id=pyspark_consumer, execution_date=20241214T124152, start_date=20241214T125912, end_date=20241214T125913
+[2024-12-14T12:59:13.421+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 5 for task pyspark_consumer (400 Client Error for http://docker-proxy:2375/v1.47/containers/create: Bad Request ("invalid mount config for type "bind": invalid mount path: './temp' mount path must be absolute"); 2153)
+[2024-12-14T12:59:13.455+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2024-12-14T12:59:13.507+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check
