@@ -37,16 +37,11 @@
 #                                startup is done EVERY TIME the service is started.
 #                                A better way is to build a custom image or extend the official image
 #                                as described in https://airflow.apache.org/docs/docker-stack/build.html.
-#                                Default: ''
-#
-# Feel free to modify this file to suit your needs.
+#                       
 ---
 version: '3.8'
 x-airflow-common:
   &airflow-common
-  # In order to add custom dependencies or upgrade provider packages you can use your extended image.
-  # Comment the image line, place your Dockerfile in the directory where you placed the docker-compose.yaml
-  # and uncomment the "build" line below, Then run `docker-compose build` to build the images.
   build:
     context: .
     dockerfile: ./airflow_resources/Dockerfile
@@ -54,31 +49,18 @@ x-airflow-common:
   environment:
     &airflow-common-env
     AIRFLOW__CORE__EXECUTOR: LocalExecutor
-    # AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
-    # # For backward compatibility, with Airflow <2.3
-    # AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
-    
     AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://postgres:postgres@postgres/reddit-data
     AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgresql+psycopg2://postgres:postgres@postgres/reddit-data
-
-
     AIRFLOW__CORE__FERNET_KEY: ''
     AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'true'
     AIRFLOW__CORE__LOAD_EXAMPLES: 'true'
     AIRFLOW__API__AUTH_BACKENDS: 'airflow.api.auth.backend.basic_auth,airflow.api.auth.backend.session'
-    # yamllint disable rule:line-length
-    # Use simple http server on scheduler for health checks
-    # See https://airflow.apache.org/docs/apache-airflow/stable/administration-and-deployment/logging-monitoring/check-health.html#scheduler-health-check-server
-    # yamllint enable rule:line-length
     AIRFLOW__SCHEDULER__ENABLE_HEALTH_CHECK: 'true'
-    # WARNING: Use _PIP_ADDITIONAL_REQUIREMENTS option ONLY for a quick checks
-    # for other purpose (development, test and especially production usage) build/extend Airflow image.
-    _PIP_ADDITIONAL_REQUIREMENTS: ${_PIP_ADDITIONAL_REQUIREMENTS:-}
     DOCKER_HOST: tcp://docker-proxy:2375 # mới thêm
   volumes:
-    - ${AIRFLOW_PROJ_DIR:-.}/dags:/opt/airflow/dags
-    - ${AIRFLOW_PROJ_DIR:-.}/logs:/opt/airflow/logs
-    - ${AIRFLOW_PROJ_DIR:-.}/config:/opt/airflow/config
+    - /home/hieu/Desktop/last/airflow_resources/dags:/opt/airflow/dags
+    - /home/hieu/Desktop/last/airflow_resources/logs:/opt/airflow/logs
+    - /home/hieu/Desktop/last/airflow_resources/config:/opt/airflow/config
     - ./src:/opt/airflow/dags/src
     - ./temp:/opt/airflow/temp
     - /var/run/docker.sock:/var/run/docker.sock #mới thêm
@@ -145,7 +127,6 @@ services:
   airflow-init:
     <<: *airflow-common
     entrypoint: /bin/bash
-    # yamllint disable rule:line-length
     command:
       - -c
       - |
@@ -208,7 +189,6 @@ services:
         mkdir -p /sources/logs /sources/dags /sources/plugins
         chown -R "${AIRFLOW_UID}:0" /sources/{logs,dags,plugins}
         exec /entrypoint airflow version
-    # yamllint enable rule:line-length
     environment:
       <<: *airflow-common-env
       _AIRFLOW_DB_MIGRATE: 'true'
@@ -233,6 +213,20 @@ services:
       - -c
       - airflow
 
+  streamlit-dashboard:
+    build:
+      context: .
+      dockerfile: ./visualize/Dockerfile
+    image: reddit-dashboard:latest
+    ports:
+      - "8501:8501"
+    environment:
+      - REFRESH_INTERVAL=60  
+    networks:
+      - airflow-kafka
+    depends_on:
+      - postgres
+    restart: always 
 
 networks:
   airflow-kafka:

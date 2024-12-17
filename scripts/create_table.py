@@ -2,7 +2,6 @@ import psycopg2
 from psycopg2 import Error
 
 def create_tables():
-    # Database connection parameters
     db_params = {
         "host": "localhost",
         "database": "reddit-data",
@@ -10,7 +9,6 @@ def create_tables():
         "password": "postgres"
     }
 
-    # SQL commands to create tables
     commands = [
         """
         DROP TABLE IF EXISTS time_engagement_stats CASCADE;
@@ -73,16 +71,13 @@ def create_tables():
     ]
 
     try:
-        # Connect to PostgreSQL
         conn = psycopg2.connect(**db_params)
         cur = conn.cursor()
 
-        # Execute each command
         for command in commands:
-            print(f"Executing: {command[:50]}...")  # Print first 50 chars of each command
+            print(f"Executing: {command[:50]}...")  
             cur.execute(command)
 
-        # Commit the changes
         conn.commit()
         print("Tables created successfully!")
 
@@ -90,7 +85,6 @@ def create_tables():
         print(f"Error while connecting to PostgreSQL: {error}")
 
     finally:
-        # Close database connection
         if conn:
             cur.close()
             conn.close()

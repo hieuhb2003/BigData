@@ -10,20 +10,14 @@ from prawcore.exceptions import PrawcoreException
 
 logging.basicConfig(format="%(asctime)s - %(message)s", level=logging.INFO, force=True)
 
-# # Reddit API credentials - replace with your own
-# REDDIT_CLIENT_ID = "your_client_id"
-# REDDIT_CLIENT_SECRET = "your_client_secret"
-# REDDIT_USER_AGENT = "your_user_agent"
-
 # Kafka configuration
 KAFKA_TOPIC = "reddit_data"
-KAFKA_BOOTSTRAP_SERVERS = ["kafka:9092"]
+# KAFKA_BOOTSTRAP_SERVERS = ["kafka:9092"]
+KAFKA_BOOTSTRAP_SERVERS = ["kafka1:9092"]
 KAFKA_LOCAL_BOOTSTRAP_SERVERS = ["localhost:9094"]
 
-# Reddit configuration
-SUBREDDITS = ["soccer", "football"]   # You can change this to specific subreddits
-FETCH_LIMIT = 25  # Number of posts to fetch per iteration
-SLEEP_TIME = 60  # Time to wait between iterations in seconds
+SUBREDDITS = ["soccer", "football"]  
+FETCH_LIMIT = 100  
 
 def create_reddit_client() -> praw.Reddit:
     """
@@ -35,18 +29,36 @@ def create_reddit_client() -> praw.Reddit:
         user_agent="python:Streaming_Kafka_Project:1.0 (by /u/New-Deer-1312)"
     )
 
-def create_kafka_producer() -> KafkaProducer:
-    """
-    Creates and returns a Kafka producer instance
-    """
-    try:
-        producer = KafkaProducer(bootstrap_servers=KAFKA_BOOTSTRAP_SERVERS)
-    except kafka.errors.NoBrokersAvailable:
-        logging.info(
-            "Using localhost Kafka connection instead of container network"
-        )
-        producer = KafkaProducer(bootstrap_servers=KAFKA_LOCAL_BOOTSTRAP_SERVERS)
+# def create_kafka_producer() -> KafkaProducer:
+#     """
+#     Creates and returns a Kafka producer instance
+#     """
+#     try:
+#         producer = KafkaProducer(bootstrap_servers=KAFKA_BOOTSTRAP_SERVERS)
+#     except kafka.errors.NoBrokersAvailable:
+#         logging.info(
+#             "Using localhost Kafka connection instead of container network"
+#         )
+#         producer = KafkaProducer(bootstrap_servers=KAFKA_LOCAL_BOOTSTRAP_SERVERS)
     
+#     return producer
+
+def create_kafka_producer() -> KafkaProducer:
+    try:
+        producer = KafkaProducer(
+            bootstrap_servers=KAFKA_BOOTSTRAP_SERVERS,
+            api_version=(3, 4),  # Thêm version để match với Kafka version
+            acks='all', 
+            retries=3
+        )
+    except kafka.errors.NoBrokersAvailable:
+        logging.info("Using localhost Kafka connection instead of container network")
+        producer = KafkaProducer(
+            bootstrap_servers=KAFKA_LOCAL_BOOTSTRAP_SERVERS,
+            api_version=(3, 4),
+            acks='all',
+            retries=3
+        )
     return producer
 
 def process_submission(submission: praw.models.Submission) -> Dict[str, Any]:
@@ -121,7 +133,7 @@ def stream_to_kafka():
             
             producer.flush()
             logging.info("Successfully sent data to Kafka")
-            producer.close()  # Explicitly close the producer
+            producer.close()  
             return True
         
         return False

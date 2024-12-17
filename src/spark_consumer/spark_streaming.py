@@ -1,195 +1,3 @@
-# from pyspark.sql import SparkSession
-# from pyspark.sql.functions import from_json, col
-# from transformation import RedditTransformer
-# import logging
-
-# logging.basicConfig(level=logging.INFO)
-# logger = logging.getLogger(__name__)
-
-# def create_spark_session():
-#     """Create Spark session with required configurations"""
-#     return SparkSession.builder \
-#         .appName("RedditSoccerAnalysis") \
-#         .getOrCreate()
-
-# def process_stream():
-#     """Main function to process streaming data"""
-#     spark = create_spark_session()
-#     transformer = RedditTransformer(spark)
-    
-#     # Read from Kafka
-#     kafka_df = spark.readStream \
-#         .format("kafka") \
-#         .option("kafka.bootstrap.servers", "kafka:9092") \
-#         .option("subscribe", "reddit_data") \
-#         .option("startingOffsets", "earliest") \
-#         .load()
-
-#     # Parse JSON data
-#     parsed_df = kafka_df.select(
-#         from_json(
-#             col("value").cast("string"),
-#             transformer.reddit_schema
-#         ).alias("data")
-#     ).select("data.*")
-
-#     def process_batch(batch_df, batch_id):
-#         try:
-#             if batch_df.count() == 0:
-#                 logger.info(f"Empty batch {batch_id}")
-#                 return
-
-#             # Transform posts
-#             posts_df = transformer.transform_reddit_posts(batch_df)
-#             transformer.save_to_postgres(posts_df, "reddit_posts")
-
-#             # Extract and save entities
-#             entities_df = transformer.process_entities(posts_df)
-#             if not entities_df.isEmpty():
-#                 transformer.save_to_postgres(entities_df, "post_entities")
-
-#             # Calculate and save player mentions
-#             if not entities_df.isEmpty():
-#                 player_mentions_df = transformer.calculate_player_mentions(entities_df, posts_df)
-#                 transformer.save_to_postgres(player_mentions_df, "player_mentions_stats")
-
-#             # Calculate and save time engagement
-#             time_engagement_df = transformer.calculate_time_engagement(posts_df)
-#             transformer.save_to_postgres(time_engagement_df, "time_engagement_stats")
-
-#             logger.info(f"Successfully processed batch {batch_id}")
-#         except Exception as e:
-#             logger.error(f"Error processing batch {batch_id}: {e}")
-#             raise e
-
-#     # Process the stream
-#     streaming_query = parsed_df.writeStream \
-#         .foreachBatch(process_batch) \
-#         .outputMode("update") \
-#         .trigger(processingTime="1 minute") \
-#         .start()
-
-#     return streaming_query
-
-# def main():
-#     try:
-#         logger.info("Starting Spark Streaming job")
-#         query = process_stream()
-#         query.awaitTermination()
-#     except Exception as e:
-#         logger.error(f"Error in main: {e}")
-#         raise e
-
-# if __name__ == "__main__":
-#     main()
-
-# from pyspark.sql import SparkSession
-# from pyspark.sql.functions import from_json, col
-# from transformation import RedditTransformer
-# import logging
-
-# logging.basicConfig(level=logging.INFO)
-# logger = logging.getLogger(__name__)
-
-# def create_spark_session():
-#     """Create Spark session with required configurations"""
-#     return SparkSession.builder \
-#         .appName("RedditSoccerAnalysis") \
-#         .getOrCreate()
-
-# def process_stream():
-#     """Main function to process streaming data"""
-#     logger.info("Starting stream processing with Kafka broker: kafka:9092")
-    
-#     spark = create_spark_session()
-#     transformer = RedditTransformer(spark)
-
-#     # Log expected schema
-#     logger.info(f"Expected schema: {transformer.reddit_schema}")
-
-#     # Read from Kafka with enhanced configurations
-#     kafka_df = spark.readStream \
-#         .format("kafka") \
-#         .option("kafka.bootstrap.servers", "kafka:9092") \
-#         .option("subscribe", "reddit_data") \
-#         .option("startingOffsets", "earliest") \
-#         .option("failOnDataLoss", "false") \
-#         .option("maxOffsetsPerTrigger", 1000) \
-#         .load()
-
-#     # Log Kafka schema
-#     logger.info("Kafka raw schema:")
-#     kafka_df.printSchema()
-
-#     # Parse JSON data
-#     parsed_df = kafka_df.select(
-#         from_json(
-#             col("value").cast("string"),
-#             transformer.reddit_schema
-#         ).alias("data")
-#     ).select("data.*")
-
-#     def process_batch(batch_df, batch_id):
-#         try:
-#             count = batch_df.count()
-#             logger.info(f"Processing batch {batch_id} with {count} records")
-            
-#             if count == 0:
-#                 logger.info(f"Empty batch {batch_id}")
-#                 return
-
-#             # Log schema and sample data
-#             logger.info("Batch data schema:")
-#             batch_df.printSchema()
-#             logger.info("Sample data:")
-#             batch_df.show(5, truncate=False)
-
-#             # Transform posts
-#             posts_df = transformer.transform_reddit_posts(batch_df)
-#             logger.info(f"Transformed {posts_df.count()} posts")
-#             transformer.save_to_postgres(posts_df, "reddit_posts")
-
-#             # Extract and save entities
-#             entities_df = transformer.process_entities(posts_df)
-#             if not entities_df.isEmpty():
-#                 logger.info(f"Processed {entities_df.count()} entities")
-#                 transformer.save_to_postgres(entities_df, "post_entities")
-
-#                 # Calculate and save player mentions
-#                 player_mentions_df = transformer.calculate_player_mentions(entities_df, posts_df)
-#                 transformer.save_to_postgres(player_mentions_df, "player_mentions_stats")
-
-#             # Calculate and save time engagement
-#             time_engagement_df = transformer.calculate_time_engagement(posts_df)
-#             transformer.save_to_postgres(time_engagement_df, "time_engagement_stats")
-
-#             logger.info(f"Successfully processed batch {batch_id}")
-
-#         except Exception as e:
-#             logger.error(f"Error processing batch {batch_id}: {str(e)}", exc_info=True)
-#             raise e
-
-#     # Process the stream
-#     streaming_query = parsed_df.writeStream \
-#         .foreachBatch(process_batch) \
-#         .outputMode("update") \
-#         .trigger(processingTime="1 minute") \
-#         .start()
-
-#     return streaming_query
-
-# def main():
-#     try:
-#         logger.info("Starting Spark Streaming job")
-#         query = process_stream()
-#         query.awaitTermination()
-#     except Exception as e:
-#         logger.error(f"Error in main: {e}", exc_info=True)
-#         raise e
-
-# if __name__ == "__main__":
-#     main()
-
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import from_json, col
 from transformation import RedditTransformer
@@ -240,13 +48,14 @@ def process_stream():
         logger.info(f"Database config: {transformer.db_config['url']}")
 
         # Read from Kafka with enhanced configurations
-        logger.info("Setting up Kafka stream reader with broker: kafka:9092")
+        logger.info("Setting up Kafka stream reader with broker: kafka1:9092")
         kafka_df = spark.readStream \
             .format("kafka") \
-            .option("kafka.bootstrap.servers", "kafka:9092") \
+            .option("kafka.bootstrap.servers", "kafka1:9092") \
             .option("subscribe", "reddit_data") \
             .option("startingOffsets", "earliest") \
             .option("kafka.group.id", "reddit_processor_group") \
+            .option("checkpointLocation", "/opt/spark/checkpoints") \
             .load()
         # Change to latest to avoid processing old data
 
@@ -265,7 +74,6 @@ def process_stream():
         ).select("data.*")
 
         def process_batch(batch_df, batch_id):
-            """Process each batch of data"""
             try:
                 count = batch_df.count()
                 logger.info(f"Starting to process batch {batch_id} with {count} records")
@@ -274,8 +82,30 @@ def process_stream():
                     logger.info(f"Empty batch {batch_id}, skipping processing")
                     return
 
+                # Lấy danh sách post_id đã có trong database
+                existing_posts = spark.read \
+                    .format("jdbc") \
+                    .option("url", transformer.db_config["url"]) \
+                    .option("dbtable", "reddit_posts") \
+                    .option("user", transformer.db_config["user"]) \
+                    .option("password", transformer.db_config["password"]) \
+                    .option("driver", transformer.db_config["driver"]) \
+                    .load() \
+                    .select("post_id")
+
+                # Lọc bỏ các records đã tồn tại trong DB
+                new_records = batch_df.join(existing_posts, 
+                                        batch_df.id == existing_posts.post_id, 
+                                        "leftanti")
+                new_count = new_records.count()
+                logger.info(f"Found {new_count} new records after filtering existing posts")
+
+                if new_count == 0:
+                    logger.info("No new records to process")
+                    return
+
                 # Validate
-                invalid_records = batch_df.filter(
+                invalid_records = new_records.filter(
                     col("id").isNull() | 
                     col("post_time").isNull() |
                     col("author").isNull()
@@ -283,15 +113,15 @@ def process_stream():
                 
                 if invalid_records.count() > 0:
                     logger.warning(f"Found {invalid_records.count()} invalid records in batch {batch_id}")
-                    batch_df = batch_df.filter(
+                    new_records = new_records.filter(
                         col("id").isNotNull() & 
                         col("post_time").isNotNull() &
                         col("author").isNotNull()
                     )
 
-                # Drop duplicates và persist
-                deduplicated_df = batch_df.dropDuplicates(["id"])
-                deduplicated_df.persist()  # Cache lại để tái sử dụng
+                # Tiếp tục xử lý với new_records thay vì batch_df
+                deduplicated_df = new_records.dropDuplicates(["id"])
+                deduplicated_df.persist()
                 dedup_count = deduplicated_df.count()
                 logger.info(f"After deduplication: {dedup_count} records")
 
