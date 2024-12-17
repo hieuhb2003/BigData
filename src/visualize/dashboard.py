@@ -149,7 +149,21 @@ class DataLoader:
                 GROUP BY entity_count
                 ORDER BY entity_count
             """, conn)
+
+            data['post_stats'] = pd.read_sql("""
+                SELECT subreddit, upvotes, num_comments, score 
+                FROM reddit_posts
+            """, conn)
             
+            # Entity Analysis
+            data['entity_subreddit'] = pd.read_sql("""
+                SELECT pe.entity_name, pe.entity_type, rp.subreddit, 
+                    COUNT(*) as mentions
+                FROM post_entities pe
+                JOIN reddit_posts rp ON pe.post_id = rp.post_id
+                GROUP BY pe.entity_name, pe.entity_type, rp.subreddit
+            """, conn)
+
             return data
         except Exception as e:
             logger.error(f"Error loading data: {e}")
@@ -193,6 +207,65 @@ class Dashboard:
             st.plotly_chart(fig_bar, use_container_width=True)
 
     @staticmethod
+    def create_post_performance_charts(df: pd.DataFrame):
+        col1, col2 = st.columns(2)
+        
+        with col1:
+            # Box plot of upvotes by subreddit
+            fig_box = px.box(
+                df,
+                x='subreddit',
+                y='upvotes',
+                title='Upvotes Distribution by Subreddit'
+            )
+            fig_box.update_layout(xaxis_tickangle=-45)
+            st.plotly_chart(fig_box, use_container_width=True)
+        
+        with col2:
+            # Histogram of comment counts
+            fig_hist = px.histogram(
+                df,
+                x='num_comments',
+                title='Distribution of Comment Counts',
+                nbins=50
+            )
+            st.plotly_chart(fig_hist, use_container_width=True)
+        
+        # Scatter plot of upvotes vs comments
+        fig_scatter = px.scatter(
+            df,
+            x='upvotes',
+            y='num_comments',
+            color='subreddit',
+            title='Upvotes vs Comments Correlation',
+            opacity=0.6
+        )
+        st.plotly_chart(fig_scatter, use_container_width=True)
+
+    @staticmethod
+    def create_entity_analysis_charts(df: pd.DataFrame):
+        # Treemap of entity types and mentions
+        fig_treemap = px.treemap(
+            df,
+            path=[px.Constant("all"), 'entity_type', 'entity_name'],
+            values='mentions',
+            title='Entity Mentions Hierarchy'
+        )
+        st.plotly_chart(fig_treemap, use_container_width=True)
+        
+        # Stacked bar chart of entity mentions by subreddit
+        fig_stacked = px.bar(
+            df,
+            x='subreddit',
+            y='mentions',
+            color='entity_type',
+            title='Entity Mentions by Subreddit',
+            barmode='stack'
+        )
+        fig_stacked.update_layout(xaxis_tickangle=-45)
+        st.plotly_chart(fig_stacked, use_container_width=True)
+
+    @staticmethod
     def create_visualization(data: Dict[str, pd.DataFrame]):
         st.header('Entity Type Distribution')
         Dashboard.create_entity_distribution_charts(data['entities'])
@@ -209,15 +282,8 @@ class Dashboard:
         fig_top.update_layout(xaxis_tickangle=-45)
         st.plotly_chart(fig_top, use_container_width=True)
         
-        st.header('Mentions Timeline')
-        fig_timeline = px.line(
-            data['timeline'], 
-            x='date', 
-            y='total_mentions', 
-            color='entity_type',
-            title='Mentions Over Time by Entity Type'
-        )
-        st.plotly_chart(fig_timeline, use_container_width=True)
+        st.header('Post Performance Metrics')
+        Dashboard.create_post_performance_charts(data['post_stats'])
         
         st.header('Entity Co-occurrence')
         fig_cooccurrence = px.bar(

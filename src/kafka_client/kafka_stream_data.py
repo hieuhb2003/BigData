@@ -16,8 +16,10 @@ KAFKA_TOPIC = "reddit_data"
 KAFKA_BOOTSTRAP_SERVERS = ["kafka1:9092"]
 KAFKA_LOCAL_BOOTSTRAP_SERVERS = ["localhost:9094"]
 
-SUBREDDITS = ["soccer", "football"]  
-FETCH_LIMIT = 100  
+SUBREDDITS = [
+    "soccer", "football", "ChampionsLeague", "premierleague", "transfers", "TransferNews"
+]
+FETCH_LIMIT = 50 
 
 def create_reddit_client() -> praw.Reddit:
     """
