@@ -85,16 +85,3 @@ docker exec -it kafka1 kafka-topics.sh --describe --topic reddit_data --bootstra
 ```bash
 docker ps
 ```
-
-## Contributing
-1. Fork the repository
-2. Create your feature branch
-3. Commit your changes
-4. Push to the branch
-5. Create a Pull Request
-
-## License
-MIT License
-
-## Contact
-Your Name - your.email@example.com
